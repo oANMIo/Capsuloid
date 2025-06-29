@@ -25,16 +25,20 @@ public class Sentry : MonoBehaviour
 
     void Update()
     {
-        if (TryFindNearestEnemy() == false)
-            return;
+        // Добавим визуализацию радиуса обнаружения
+        Debug.DrawRay(transform.position, Vector2.right * detectionRange, Color.red);
+        Debug.DrawRay(transform.position, Vector2.left * detectionRange, Color.red);
 
-        if (currentAmmo > 0 && Time.time > lastAttackTime + attackCooldown)
+        if (TryFindNearestEnemy()) // Теперь возвращает true только при наличии врага
         {
-            Attack();
-        }
-        else if (currentAmmo <= 0)
-        {
-            Die();
+            if (currentAmmo > 0 && Time.time > lastAttackTime + attackCooldown)
+            {
+                Attack();
+            }
+            else if (currentAmmo <= 0)
+            {
+                Die();
+            }
         }
     }
 
@@ -46,7 +50,7 @@ public class Sentry : MonoBehaviour
 
         foreach (GameObject enemyObj in enemies)
         {
-            if (enemyObj == null) continue; // Пропускаем уничтоженные объекты
+            if (enemyObj == null) continue;
 
             float distance = Vector3.Distance(transform.position, enemyObj.transform.position);
             if (distance < detectionRange && distance < closestDistance)
@@ -55,33 +59,41 @@ public class Sentry : MonoBehaviour
                 closestEnemy = enemyObj.transform;
             }
         }
+
         enemy = closestEnemy;
-        if (enemy == null) 
-        { return true; }
-        else {return false; }
+        return enemy != null; // Теперь правильно: true если враг найден
     }
 
     public void Attack()
     {
-
-        if (bulletPrefab == null)
+        if (bulletPrefab == null || enemy == null || firePoint == null)
         {
-            Debug.LogError("BulletPrefab missing!");
+            Debug.LogError("Attack components missing!");
             return;
         }
 
-        Debug.Log($"Attacking enemy: {enemy.name} at position {enemy.position}");
+        Debug.Log($"Attacking enemy: {enemy.name}");
 
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        Bullet bulletComponent = bullet.GetComponent<Bullet>();
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
+        Vector2 direction = (enemy.position - firePoint.position).normalized;
 
-        if (bulletComponent == null)
+        // Альтернативный вариант без компонента Bullet
+        Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
+        if (bulletRb != null)
         {
-            Debug.LogError("Instantiated bullet has no Bullet component!", bullet);
-            return;
+            float bulletSpeed = 10f;
+            bulletRb.velocity = direction * bulletSpeed;
+
+            // Поворачиваем пулю в направлении движения
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            bullet.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        }
+        else
+        {
+            Debug.LogError("Bullet has no Rigidbody2D!", bullet);
         }
 
-        bulletComponent.SetTarget(enemy);
+        Destroy(bullet, 5f);
         currentAmmo--;
         lastAttackTime = Time.time;
     }
@@ -91,5 +103,4 @@ public class Sentry : MonoBehaviour
         // Здесь можно добавить анимацию смерти
         Destroy(gameObject, 0.5f); // Задержка для проигрывания анимации
     }
-
 }
