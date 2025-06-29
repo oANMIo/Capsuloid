@@ -28,18 +28,29 @@ public class Hero : MonoBehaviour
             winText.gameObject.SetActive(false);
     }
 
+    [System.Obsolete]
     void Update()
     {
         Instance = this;
         float movement = Input.GetAxis("Horizontal");
+
+        // Движение персонажа
         transform.position += new Vector3(movement, 0, 0) * speed * Time.deltaTime;
 
         if (Input.GetKeyDown(KeyCode.Space) && Mathf.Abs(rb.velocity.y) < 0.05f)
             rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
 
-        sr.flipX = movement < 0;
+        // Простой поворот персонажа
+        if (movement > 0.1f) // Движение вправо
+        {
+            transform.localScale = new Vector3(7, 7, 1);
+        }
+        else if (movement < -0.1f) // Движение влево
+        {
+            transform.localScale = new Vector3(-7, 7, 1);
+        }
 
-        // Спавн турели по нажатию клавиши
+        // Спавн турели
         if (Input.GetKeyDown(spawnKey) && sentryPrefab != null)
         {
             SpawnSentry();
@@ -48,13 +59,10 @@ public class Hero : MonoBehaviour
 
     private void SpawnSentry()
     {
-        // Определяем направление спавна (перед игроком)
-        Vector3 spawnDirection = sr.flipX ? Vector3.left : Vector3.right;
+        // Направление спавна теперь учитывает scale.x
+        Vector3 spawnDirection = transform.localScale.x > 0 ? Vector3.right : Vector3.left;
+        Vector3 spawnPosition = transform.position + (spawnDirection * spawnDistance) - new Vector3(0, 0, 0);
 
-        // Спавн на уровне ног (основная позиция - 0.5f ниже)
-        Vector3 spawnPosition = transform.position + spawnDirection * spawnDistance - new Vector3(0, 0.65f, 0);
-
-        // Создаём турель
         GameObject sentry = Instantiate(sentryPrefab, spawnPosition, Quaternion.identity);
         Debug.Log("Turret spawned at: " + spawnPosition);
     }
