@@ -1,0 +1,1167 @@
+fileFormatVersion: 2
+guid: adaa3a7ee04634040b6c1fc9a076093f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -870329096486814068
+    second: Bright 2 Color Buttons Full Hi-Res_0
+  - first:
+      213: 6448763727413482983
+    second: Bright 2 Color Buttons Full Hi-Res_1
+  - first:
+      213: -5349627067961817601
+    second: Bright 2 Color Buttons Full Hi-Res_2
+  - first:
+      213: 6471360185580759589
+    second: Bright 2 Color Buttons Full Hi-Res_3
+  - first:
+      213: -8257318201171029603
+    second: Bright 2 Color Buttons Full Hi-Res_4
+  - first:
+      213: -2662563882273754061
+    second: Bright 2 Color Buttons Full Hi-Res_5
+  - first:
+      213: 4508759102751401421
+    second: Bright 2 Color Buttons Full Hi-Res_6
+  - first:
+      213: 3490117367860628225
+    second: Bright 2 Color Buttons Full Hi-Res_7
+  - first:
+      213: 792613245393758222
+    second: Bright 2 Color Buttons Full Hi-Res_8
+  - first:
+      213: 637115554798770741
+    second: Bright 2 Color Buttons Full Hi-Res_9
+  - first:
+      213: 6143783422612991551
+    second: Bright 2 Color Buttons Full Hi-Res_10
+  - first:
+      213: 6045149883783910403
+    second: Bright 2 Color Buttons Full Hi-Res_11
+  - first:
+      213: -3686066008678543084
+    second: Bright 2 Color Buttons Full Hi-Res_12
+  - first:
+      213: 4795879454425129047
+    second: Bright 2 Color Buttons Full Hi-Res_13
+  - first:
+      213: -7281578310264791658
+    second: Bright 2 Color Buttons Full Hi-Res_14
+  - first:
+      213: 8708252025834391095
+    second: Bright 2 Color Buttons Full Hi-Res_15
+  - first:
+      213: -7829139654665335842
+    second: Bright 2 Color Buttons Full Hi-Res_16
+  - first:
+      213: -8441178917899661632
+    second: Bright 2 Color Buttons Full Hi-Res_17
+  - first:
+      213: 6276842824870452117
+    second: Bright 2 Color Buttons Full Hi-Res_18
+  - first:
+      213: -8091820119698609745
+    second: Bright 2 Color Buttons Full Hi-Res_19
+  - first:
+      213: 1245738613300330221
+    second: Bright 2 Color Buttons Full Hi-Res_20
+  - first:
+      213: 1058393825283436364
+    second: Bright 2 Color Buttons Full Hi-Res_21
+  - first:
+      213: -4612732240939210880
+    second: Bright 2 Color Buttons Full Hi-Res_22
+  - first:
+      213: 630054640168742703
+    second: Bright 2 Color Buttons Full Hi-Res_23
+  - first:
+      213: -6796684221861541676
+    second: Bright 2 Color Buttons Full Hi-Res_24
+  - first:
+      213: 4149505509648581268
+    second: Bright 2 Color Buttons Full Hi-Res_25
+  - first:
+      213: -1446034860598556171
+    second: Bright 2 Color Buttons Full Hi-Res_26
+  - first:
+      213: -3921932381595054773
+    second: Bright 2 Color Buttons Full Hi-Res_27
+  - first:
+      213: 517800288527716834
+    second: Bright 2 Color Buttons Full Hi-Res_28
+  - first:
+      213: -788275369553291339
+    second: Bright 2 Color Buttons Full Hi-Res_29
+  - first:
+      213: 6088885340041976542
+    second: Bright 2 Color Buttons Full Hi-Res_30
+  - first:
+      213: 8983402888641916273
+    second: Bright 2 Color Buttons Full Hi-Res_31
+  - first:
+      213: -6705599990774597120
+    second: Bright 2 Color Buttons Full Hi-Res_32
+  - first:
+      213: -1534245358897658049
+    second: Bright 2 Color Buttons Full Hi-Res_33
+  - first:
+      213: -4080686291911907231
+    second: Bright 2 Color Buttons Full Hi-Res_34
+  - first:
+      213: 5660909537541110613
+    second: Bright 2 Color Buttons Full Hi-Res_35
+  - first:
+      213: 1817050413565020020
+    second: Bright 2 Color Buttons Full Hi-Res_36
+  - first:
+      213: -3090014242458757922
+    second: Bright 2 Color Buttons Full Hi-Res_37
+  - first:
+      213: -670564609414722071
+    second: Bright 2 Color Buttons Full Hi-Res_38
+  - first:
+      213: -1512135365630244352
+    second: Bright 2 Color Buttons Full Hi-Res_39
+  - first:
+      213: -4286228137082605035
+    second: Bright 2 Color Buttons Full Hi-Res_40
+  - first:
+      213: 7026859005310238146
+    second: Bright 2 Color Buttons Full Hi-Res_41
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Bright 2 Color Buttons Full Hi-Res_0
+      rect:
+        serializedVersion: 2
+        x: 1970
+        y: 12039
+        width: 1857
+        height: 638
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8e77364c48fbe3f0800000000000000
+      internalID: -870329096486814068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bright 2 Color Buttons Full Hi-Res_1
+      rect:
+        serializedVersion: 2
+        x: 4481
+        y: 11593
+        width: 1500
+        height: 1023
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e597ec617c9e7950800000000000000
+      internalID: 6448763727413482983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bright 2 Color Buttons Full Hi-Res_2
+      rect:
+        serializedVersion: 2
+        x: 7013
+        y: 12039
+        width: 1858
+        height: 638
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff54255768e42c5b0800000000000000
+      internalID: -5349627067961817601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bright 2 Color Buttons Full Hi-Res_3
+      rect:
+        serializedVersion: 2
+        x: 9527
+        y: 11594
+        width: 1494
+        height: 1021
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52aa5235dc3eec950800000000000000
+      internalID: 6471360185580759589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bright 2 Color Buttons Full Hi-Res_4
+      rect:
+        serializedVersion: 2
+        x: 1970
+        y: 11180
+        width: 1857
+        height: 639
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9155dd58dc186d80800000000000000
+      internalID: -8257318201171029603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bright 2 Color Buttons Full Hi-Res_5
+      rect:
+        serializedVersion: 2
+        x: 4475
+        y: 10164
+        width: 1500
+        height: 1023
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 334b945814cac0bd0800000000000000
+      internalID: -2662563882273754061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bright 2 Color Buttons Full Hi-Res_6
+      rect:
+        serializedVersion: 2
+        x: 7013
+        y: 11180
+        width: 1858
+        height: 639
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc56e49f384529e30800000000000000
+      internalID: 4508759102751401421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bright 2 Color Buttons Full Hi-Res_7
+      rect:
+        serializedVersion: 2
+        x: 9521
+        y: 10166
+        width: 1494
+        height: 1020
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10b01cf21436f6030800000000000000
+      internalID: 3490117367860628225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bright 2 Color Buttons Full Hi-Res_8
+      rect:
+        serializedVersion: 2
+        x: 1970
+        y: 10240
+        width: 1857
+        height: 639
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e08e6f71c8deffa00800000000000000
+      internalID: 792613245393758222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bright 2 Color Buttons Full Hi-Res_9
+      rect:
+        serializedVersion: 2
+        x: 7013
+        y: 10240
+        width: 1858
+        height: 643
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53a18a4b83d77d800800000000000000
+      internalID: 637115554798770741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bright 2 Color Buttons Full Hi-Res_10
+      rect:
+        serializedVersion: 2
+        x: 1970
+        y: 9218
+        width: 1857
+        height: 639
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3ee7c1c87a134550800000000000000
+      internalID: 6143783422612991551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bright 2 Color Buttons Full Hi-Res_11
+      rect:
+        serializedVersion: 2
+        x: 4475
+        y: 8622
+        width: 1500
+        height: 1023
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3041fec6acfa4e350800000000000000
+      internalID: 6045149883783910403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bright 2 Color Buttons Full Hi-Res_12
+      rect:
+        serializedVersion: 2
+        x: 7013
+        y: 9218
+        width: 1858
+        height: 639
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 411d216ae7678dcc0800000000000000
+      internalID: -3686066008678543084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bright 2 Color Buttons Full Hi-Res_13
+      rect:
+        serializedVersion: 2
+        x: 9521
+        y: 8624
+        width: 1494
+        height: 1020
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 750aa9244f26e8240800000000000000
+      internalID: 4795879454425129047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bright 2 Color Buttons Full Hi-Res_14
+      rect:
+        serializedVersion: 2
+        x: 1970
+        y: 8251
+        width: 1857
+        height: 638
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69d5a743b13a2fa90800000000000000
+      internalID: -7281578310264791658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bright 2 Color Buttons Full Hi-Res_15
+      rect:
+        serializedVersion: 2
+        x: 7013
+        y: 8251
+        width: 1858
+        height: 638
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7364f66441de9d870800000000000000
+      internalID: 8708252025834391095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bright 2 Color Buttons Full Hi-Res_16
+      rect:
+        serializedVersion: 2
+        x: 1970
+        y: 7213
+        width: 1857
+        height: 638
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: edb8fb2f6fe495390800000000000000
+      internalID: -7829139654665335842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bright 2 Color Buttons Full Hi-Res_17
+      rect:
+        serializedVersion: 2
+        x: 4475
+        y: 6947
+        width: 1500
+        height: 1022
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ce03195f78eada80800000000000000
+      internalID: -8441178917899661632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bright 2 Color Buttons Full Hi-Res_18
+      rect:
+        serializedVersion: 2
+        x: 7013
+        y: 7213
+        width: 1858
+        height: 638
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59bdc570b43db1750800000000000000
+      internalID: 6276842824870452117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bright 2 Color Buttons Full Hi-Res_19
+      rect:
+        serializedVersion: 2
+        x: 9521
+        y: 6948
+        width: 1494
+        height: 1020
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa96103397414bf80800000000000000
+      internalID: -8091820119698609745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bright 2 Color Buttons Full Hi-Res_20
+      rect:
+        serializedVersion: 2
+        x: 1970
+        y: 6354
+        width: 1857
+        height: 639
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: deef0c82ba0c94110800000000000000
+      internalID: 1245738613300330221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bright 2 Color Buttons Full Hi-Res_21
+      rect:
+        serializedVersion: 2
+        x: 4475
+        y: 5405
+        width: 1500
+        height: 1022
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4f6c74939b20be00800000000000000
+      internalID: 1058393825283436364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bright 2 Color Buttons Full Hi-Res_22
+      rect:
+        serializedVersion: 2
+        x: 7013
+        y: 6354
+        width: 1858
+        height: 639
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 087a3d657784cffb0800000000000000
+      internalID: -4612732240939210880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bright 2 Color Buttons Full Hi-Res_23
+      rect:
+        serializedVersion: 2
+        x: 9521
+        y: 5406
+        width: 1494
+        height: 1020
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2f28586b576eb800800000000000000
+      internalID: 630054640168742703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bright 2 Color Buttons Full Hi-Res_24
+      rect:
+        serializedVersion: 2
+        x: 1970
+        y: 5414
+        width: 1857
+        height: 638
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d8c079e5b35da1a0800000000000000
+      internalID: -6796684221861541676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bright 2 Color Buttons Full Hi-Res_25
+      rect:
+        serializedVersion: 2
+        x: 7013
+        y: 5414
+        width: 1858
+        height: 638
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4924128a641069930800000000000000
+      internalID: 4149505509648581268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bright 2 Color Buttons Full Hi-Res_26
+      rect:
+        serializedVersion: 2
+        x: 1970
+        y: 4392
+        width: 1857
+        height: 639
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f90139a4f6aeebe0800000000000000
+      internalID: -1446034860598556171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bright 2 Color Buttons Full Hi-Res_27
+      rect:
+        serializedVersion: 2
+        x: 4475
+        y: 3770
+        width: 1500
+        height: 1023
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4dcce9374f7299c0800000000000000
+      internalID: -3921932381595054773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bright 2 Color Buttons Full Hi-Res_28
+      rect:
+        serializedVersion: 2
+        x: 7013
+        y: 4392
+        width: 1858
+        height: 639
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e11a467e989f2700800000000000000
+      internalID: 517800288527716834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bright 2 Color Buttons Full Hi-Res_29
+      rect:
+        serializedVersion: 2
+        x: 9521
+        y: 3771
+        width: 1494
+        height: 1021
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b716945abb7f05f0800000000000000
+      internalID: -788275369553291339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bright 2 Color Buttons Full Hi-Res_30
+      rect:
+        serializedVersion: 2
+        x: 1970
+        y: 3425
+        width: 1857
+        height: 638
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eda194bd4f0108450800000000000000
+      internalID: 6088885340041976542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bright 2 Color Buttons Full Hi-Res_31
+      rect:
+        serializedVersion: 2
+        x: 7013
+        y: 3425
+        width: 1858
+        height: 638
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17d28b3c4557bac70800000000000000
+      internalID: 8983402888641916273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bright 2 Color Buttons Full Hi-Res_32
+      rect:
+        serializedVersion: 2
+        x: 1970
+        y: 2512
+        width: 1857
+        height: 638
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00a7400165ce0f2a0800000000000000
+      internalID: -6705599990774597120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bright 2 Color Buttons Full Hi-Res_33
+      rect:
+        serializedVersion: 2
+        x: 4475
+        y: 2228
+        width: 1500
+        height: 1023
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f370d9099f345bae0800000000000000
+      internalID: -1534245358897658049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bright 2 Color Buttons Full Hi-Res_34
+      rect:
+        serializedVersion: 2
+        x: 7013
+        y: 2512
+        width: 1858
+        height: 638
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 168e8ca107d7e57c0800000000000000
+      internalID: -4080686291911907231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bright 2 Color Buttons Full Hi-Res_35
+      rect:
+        serializedVersion: 2
+        x: 9521
+        y: 2229
+        width: 1494
+        height: 1021
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55b32ca4b379f8e40800000000000000
+      internalID: 5660909537541110613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bright 2 Color Buttons Full Hi-Res_36
+      rect:
+        serializedVersion: 2
+        x: 1970
+        y: 1501
+        width: 1857
+        height: 639
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 477058759b5773910800000000000000
+      internalID: 1817050413565020020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bright 2 Color Buttons Full Hi-Res_37
+      rect:
+        serializedVersion: 2
+        x: 4507
+        y: 748
+        width: 1500
+        height: 1023
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed419570b601e15d0800000000000000
+      internalID: -3090014242458757922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bright 2 Color Buttons Full Hi-Res_38
+      rect:
+        serializedVersion: 2
+        x: 7013
+        y: 1501
+        width: 1858
+        height: 639
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ed03e06a0da1b6f0800000000000000
+      internalID: -670564609414722071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bright 2 Color Buttons Full Hi-Res_39
+      rect:
+        serializedVersion: 2
+        x: 9554
+        y: 749
+        width: 1493
+        height: 1021
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00acd4785e0d30be0800000000000000
+      internalID: -1512135365630244352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bright 2 Color Buttons Full Hi-Res_40
+      rect:
+        serializedVersion: 2
+        x: 1970
+        y: 523
+        width: 1857
+        height: 638
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51238eef7324484c0800000000000000
+      internalID: -4286228137082605035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bright 2 Color Buttons Full Hi-Res_41
+      rect:
+        serializedVersion: 2
+        x: 7013
+        y: 523
+        width: 1858
+        height: 638
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2cd7542190b648160800000000000000
+      internalID: 7026859005310238146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
