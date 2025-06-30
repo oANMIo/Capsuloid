@@ -3,76 +3,87 @@ using UnityEngine.UI;
 
 public class Hero : MonoBehaviour
 {
+    private const int X = 7;
+    private const int Y = 7;
     [SerializeField] private float speed = 3f;
     [SerializeField] private float jumpForce = 20f;
     [SerializeField] private int healthPoints = 3;
 
     [Header("Turret Settings")]
-    [SerializeField] private GameObject sentryPrefab; // Префаб турели (Sentry)
-    [SerializeField] private float spawnDistance = 2f; // Дистанция спавна перед игроком
-    [SerializeField] private KeyCode spawnKey = KeyCode.E; // Клавиша для спавна
+    [SerializeField] private GameObject sentryPrefab;
+    [SerializeField] private float spawnDistance = 2f;
+    [SerializeField] private KeyCode spawnKey = KeyCode.E;
 
+    private GameObject currentSentry; // Храним ссылку на текущую турель
     public static Hero Instance { get; set; }
 
     private Rigidbody2D rb;
-    private SpriteRenderer sr;
-
-    [SerializeField] private Text winText; // Текст победы
+    private Animator animator;
+    [SerializeField] private Text winText;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        sr = GetComponent<SpriteRenderer>();
-
-        if (winText != null)
-            winText.gameObject.SetActive(false);
+        animator = GetComponent<Animator>();
+        if (winText != null) winText.gameObject.SetActive(false);
     }
 
-    [System.Obsolete]
     void Update()
     {
         Instance = this;
-        float movement = Input.GetAxis("Horizontal");
+        HandleMovement();
+        HandleTurret();
+    }
 
-        // Движение персонажа
-        transform.position += new Vector3(movement, 0, 0) * speed * Time.deltaTime;
+    private void HandleMovement()
+    {
+        float movement = Input.GetAxis("Horizontal");
+        if (movement != 0)
+        {
+            transform.position += new Vector3(movement, 0, 0) * speed * Time.deltaTime;
+            animator.SetBool("Walk", true);
+
+            // Поворот персонажа
+            if (movement > 0.1f) transform.localScale = new Vector3(-X, Y, 1);
+            else if (movement < -0.1f) transform.localScale = new Vector3(X, Y, 1);
+        }
+        else
+        {
+            animator.SetBool("Walk", false);
+        }
 
         if (Input.GetKeyDown(KeyCode.Space) && Mathf.Abs(rb.velocity.y) < 0.05f)
+        {
             rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
-
-        // Простой поворот персонажа
-        if (movement > 0.1f) // Движение вправо
-        {
-            transform.localScale = new Vector3(7, 7, 1);
         }
-        else if (movement < -0.1f) // Движение влево
-        {
-            transform.localScale = new Vector3(-7, 7, 1);
-        }
+    }
 
-        // Спавн турели
-        if (Input.GetKeyDown(spawnKey) && sentryPrefab != null)
+    private void HandleTurret()
+    {
+        if (Input.GetKeyDown(spawnKey))
         {
-            SpawnSentry();
+            if (currentSentry == null)
+            {
+                SpawnSentry();
+            }
+            else
+            {
+                Destroy(currentSentry); // Уничтожаем турель при повторном нажатии
+                currentSentry = null;
+            }
         }
     }
 
     private void SpawnSentry()
     {
-        // Направление спавна теперь учитывает scale.x
         Vector3 spawnDirection = transform.localScale.x > 0 ? Vector3.right : Vector3.left;
-        Vector3 spawnPosition = transform.position + (spawnDirection * spawnDistance) - new Vector3(0, 0, 0);
-
-        GameObject sentry = Instantiate(sentryPrefab, spawnPosition, Quaternion.identity);
-        Debug.Log("Turret spawned at: " + spawnPosition);
+        Vector3 spawnPosition = transform.position + spawnDirection * spawnDistance;
+        currentSentry = Instantiate(sentryPrefab, spawnPosition, Quaternion.identity);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("WinZone"))
-        {
-            WinGame();
-        }
+        if (collision.CompareTag("WinZone")) WinGame();
     }
 
     private void WinGame()
@@ -82,23 +93,18 @@ public class Hero : MonoBehaviour
             winText.text = "You won, congrats!";
             winText.gameObject.SetActive(true);
         }
-        Debug.Log("You won!");
         Time.timeScale = 0f;
     }
 
     public void GetDamage()
     {
-        healthPoints -= 1;
-        Debug.Log(healthPoints);
-        if (healthPoints <= 0)
-        {
-            Die();
-        }
+        healthPoints--;
+        if (healthPoints <= 0) Die();
     }
 
     public void Die()
     {
-        Debug.Log("You lost");
-        Destroy(this.gameObject);
+        if (animator != null) animator.SetTrigger("Die");
+        Destroy(gameObject, 3f);
     }
 }
