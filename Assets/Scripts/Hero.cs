@@ -110,9 +110,8 @@ public class Hero : MonoBehaviour
         if (animator != null) animator.SetTrigger("Die");
         GetComponent<Rigidbody2D>().simulated = false;
         GetComponent<Collider2D>().enabled = false;
-        enabled = false;
         Destroy(gameObject, 3f);
-        Invoke("ReloadScene", 5f);
+        Invoke("ReloadScene", 1f);
     }
 
     private void ReloadScene()
