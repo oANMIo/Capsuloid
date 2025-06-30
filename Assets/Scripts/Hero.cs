@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Hero : MonoBehaviour
@@ -11,7 +12,7 @@ public class Hero : MonoBehaviour
 
     [Header("Turret Settings")]
     [SerializeField] private GameObject sentryPrefab;
-    [SerializeField] private float spawnDistance = 2f;
+    [SerializeField] private float spawnDistance = -2f;
     [SerializeField] private KeyCode spawnKey = KeyCode.E;
 
     private GameObject currentSentry; // Храним ссылку на текущую турель
@@ -76,7 +77,8 @@ public class Hero : MonoBehaviour
 
     private void SpawnSentry()
     {
-        Vector3 spawnDirection = transform.localScale.x > 0 ? Vector3.right : Vector3.left;
+        // Определяем направление по scale (если X положительный - смотрим влево, отрицательный - вправо)
+        Vector3 spawnDirection = transform.localScale.x > 0 ? Vector3.left : Vector3.right;
         Vector3 spawnPosition = transform.position + spawnDirection * spawnDistance;
         currentSentry = Instantiate(sentryPrefab, spawnPosition, Quaternion.identity);
     }
@@ -99,12 +101,26 @@ public class Hero : MonoBehaviour
     public void GetDamage()
     {
         healthPoints--;
+        HeartSystem.health -= 1;
         if (healthPoints <= 0) Die();
     }
 
     public void Die()
     {
         if (animator != null) animator.SetTrigger("Die");
+        GetComponent<Rigidbody2D>().simulated = false;
+        GetComponent<Collider2D>().enabled = false;
+        enabled = false;
         Destroy(gameObject, 3f);
+        Invoke("ReloadScene", 5f);
+    }
+
+    private void ReloadScene()
+    {
+        // Получаем индекс текущей сцены и перезагружаем её
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+        // Восстанавливаем нормальную скорость игры (на случай, если она была изменена)
+        Time.timeScale = 1f;
     }
 }
