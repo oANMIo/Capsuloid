@@ -15,12 +15,18 @@ public class Hero : MonoBehaviour
     [SerializeField] private float spawnDistance = -2f;
     [SerializeField] private KeyCode spawnKey = KeyCode.E;
 
-    private GameObject currentSentry; // Храним ссылку на текущую турель
+    private GameObject currentSentry;
     public static Hero Instance { get; set; }
 
     private Rigidbody2D rb;
     private Animator animator;
     [SerializeField] private Text winText;
+
+    [Header("Ground Check")]
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private float groundCheckRadius = 0.2f;
+    [SerializeField] private LayerMask groundLayer;
+    private bool isGrounded;
 
     void Start()
     {
@@ -32,10 +38,13 @@ public class Hero : MonoBehaviour
     void Update()
     {
         Instance = this;
+        CheckGrounded();
         HandleMovement();
         HandleTurret();
+        HandleFallAnimation();
     }
 
+    [System.Obsolete]
     private void HandleMovement()
     {
         float movement = Input.GetAxis("Horizontal");
@@ -75,11 +84,37 @@ public class Hero : MonoBehaviour
         }
     }
 
+    private void CheckGrounded()
+    {
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+    }
+
+    private void HandleFallAnimation()
+    {
+        if (animator != null)
+        {
+            animator.SetBool("Fall", !isGrounded && rb.velocity.y < 0);
+        }
+    }
+
     private void SpawnSentry()
     {
-        // Определяем направление по scale (если X положительный - смотрим влево, отрицательный - вправо)
+        if (!isGrounded)
+        {
+            Debug.Log("Can't place sentry in air!");
+            return;
+        }
+
         Vector3 spawnDirection = transform.localScale.x > 0 ? Vector3.left : Vector3.right;
         Vector3 spawnPosition = transform.position + spawnDirection * spawnDistance;
+
+        RaycastHit2D hit = Physics2D.Raycast(spawnPosition, Vector2.down, 2f, groundLayer);
+        if (hit.collider != null)
+        {
+            spawnPosition.y = hit.point.y + 0.1f;
+        }
+
+        if (currentSentry != null) Destroy(currentSentry);
         currentSentry = Instantiate(sentryPrefab, spawnPosition, Quaternion.identity);
     }
 

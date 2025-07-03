@@ -3,9 +3,9 @@ using UnityEngine;
 public class Sentry : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] private int maxAmmo = 10;
-    [SerializeField] private float attackCooldown = 1f;
-    [SerializeField] private float detectionRange = 5f;
+    [SerializeField] private int maxAmmo = 5;
+    [SerializeField] private float attackCooldown = 2f;
+    [SerializeField] private float detectionRange = 10f;
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject bulletPrefab;
 
