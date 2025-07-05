@@ -337,7 +337,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -2
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -17343,7 +17343,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: -8202031391263197032, guid: 8cb838790d495aa489d421a8e65e52f5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -17478,6 +17478,7 @@ GameObject:
   - component: {fileID: 580743571}
   - component: {fileID: 580743570}
   - component: {fileID: 580743572}
+  - component: {fileID: 580743573}
   m_Layer: 0
   m_Name: bakground_0
   m_TagString: Untagged
@@ -17570,6 +17571,23 @@ MonoBehaviour:
   followX: 1
   followY: 1
   textureUnitSize: 0
+--- !u!114 &580743573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 580743569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23bd14e38d6f9e64183845ffa5d5902b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAmmo: 5
+  attackCooldown: 2
+  detectionRange: 10
+  firePoint: {fileID: 0}
+  bulletPrefab: {fileID: 0}
 --- !u!1 &588597513
 GameObject:
   m_ObjectHideFlags: 0
@@ -17776,18 +17794,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 185986086554277975, guid: 9cd78c6d911f4334a9ea99fee9c18c9b, type: 3}
-      propertyPath: groundCheck
-      value: 
-      objectReference: {fileID: 1987180803}
-    - target: {fileID: 185986086554277975, guid: 9cd78c6d911f4334a9ea99fee9c18c9b, type: 3}
-      propertyPath: groundCheckRadius
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 185986086554277975, guid: 9cd78c6d911f4334a9ea99fee9c18c9b, type: 3}
-      propertyPath: groundLayer.m_Bits
-      value: 64
-      objectReference: {fileID: 0}
     - target: {fileID: 4955006676022758161, guid: 9cd78c6d911f4334a9ea99fee9c18c9b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -18.05
@@ -17834,10 +17840,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 4955006676022758161, guid: 9cd78c6d911f4334a9ea99fee9c18c9b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1987180803}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cd78c6d911f4334a9ea99fee9c18c9b, type: 3}
 --- !u!1001 &739164196
@@ -20763,37 +20766,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 136a6e7bdf24b554fadb5406bb8d2355, type: 3}
---- !u!1 &1987180802
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1987180803}
-  m_Layer: 0
-  m_Name: GroundCheck
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1987180803
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1987180802}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.009, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 616588925}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2004347858 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3031093986493274119, guid: 8512acdf8edbfaa4dbeefb5004b0e35d, type: 3}
@@ -20811,7 +20783,7 @@ GameObject:
   - component: {fileID: 2139240404}
   - component: {fileID: 2139240403}
   m_Layer: 0
-  m_Name: Teleport3Lvl
+  m_Name: FinalSecondLvl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

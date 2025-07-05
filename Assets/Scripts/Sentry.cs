@@ -68,7 +68,6 @@ public class Sentry : MonoBehaviour
     {
         if (bulletPrefab == null || enemy == null || firePoint == null)
         {
-            Debug.LogError("Attack components missing!");
             return;
         }
 
