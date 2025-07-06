@@ -3,9 +3,9 @@ using UnityEngine;
 public class Sentry : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] private int maxAmmo = 10;
-    [SerializeField] private float attackCooldown = 1f;
-    [SerializeField] private float detectionRange = 5f;
+    [SerializeField] private int maxAmmo = 5;
+    [SerializeField] private float attackCooldown = 2f;
+    [SerializeField] private float detectionRange = 10f;
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject bulletPrefab;
 
@@ -76,22 +76,6 @@ public class Sentry : MonoBehaviour
 
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
         Vector2 direction = (enemy.position - firePoint.position).normalized;
-
-        // Альтернативный вариант без компонента Bullet
-        Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
-        if (bulletRb != null)
-        {
-            float bulletSpeed = 10f;
-            bulletRb.velocity = direction * bulletSpeed;
-
-            // Поворачиваем пулю в направлении движения
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            bullet.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        }
-        else
-        {
-            Debug.LogError("Bullet has no Rigidbody2D!", bullet);
-        }
 
         Destroy(bullet, 5f);
         currentAmmo--;
