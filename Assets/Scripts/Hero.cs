@@ -65,7 +65,7 @@ public class Hero : MonoBehaviour
         }
 
         // Обработка прыжка через триггер
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (Input.GetKeyDown(KeyCode.UpArrow) && isGrounded)
         {
             animator.SetTrigger("Jump"); // Однократный триггер для анимации прыжка
             rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
