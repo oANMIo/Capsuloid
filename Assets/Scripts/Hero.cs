@@ -47,7 +47,9 @@ public class Hero : MonoBehaviour
     [System.Obsolete]
     private void HandleMovement()
     {
+        // Обработка движения по горизонтали
         float movement = Input.GetAxis("Horizontal");
+
         if (movement != 0)
         {
             transform.position += new Vector3(movement, 0, 0) * speed * Time.deltaTime;
@@ -62,10 +64,20 @@ public class Hero : MonoBehaviour
             animator.SetBool("Walk", false);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && Mathf.Abs(rb.velocity.y) < 0.05f)
+        // Обработка прыжка через триггер
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
+            animator.SetTrigger("Jump"); // Однократный триггер для анимации прыжка
             rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
         }
+
+        // Дополнительно: синхронизируем параметр isGrounded в аниматоре
+        animator.SetBool("IsGrounded", isGrounded);
+    }
+
+    private void CheckGrounded()
+    {
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
     }
 
     private void HandleTurret()
@@ -84,10 +96,6 @@ public class Hero : MonoBehaviour
         }
     }
 
-    private void CheckGrounded()
-    {
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
-    }
 
     private void HandleFallAnimation()
     {
