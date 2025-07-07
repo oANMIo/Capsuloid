@@ -8,7 +8,7 @@ public class Letun : MonoBehaviour
     [SerializeField] private float damageAmount = 1f; // ”рон игроку
 
     [Header("Visual Settings")]
-    [SerializeField] private ParticleSystem hitEffect; // Ёффект при столкновении
+    [SerializeField] private ParticleSystem hitEffect;
 
     private Vector3 startPosition;
     private bool movingUp = true;

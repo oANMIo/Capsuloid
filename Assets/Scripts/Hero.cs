@@ -27,6 +27,9 @@ public class Hero : MonoBehaviour
     [SerializeField] private float groundCheckRadius = 0.2f;
     [SerializeField] private LayerMask groundLayer;
     private bool isGrounded;
+    public AudioSource audioSource;
+    [SerializeField] private AudioClip JumpSound;
+    [SerializeField] private AudioClip SentryUp;
 
     void Start()
     {
@@ -34,7 +37,7 @@ public class Hero : MonoBehaviour
         animator = GetComponent<Animator>();
         if (winText != null) winText.gameObject.SetActive(false);
     }
-
+    [System.Obsolete]
     void Update()
     {
         Instance = this;
@@ -67,6 +70,7 @@ public class Hero : MonoBehaviour
         // Обработка прыжка через триггер
         if (Input.GetKeyDown(KeyCode.UpArrow) && isGrounded)
         {
+            audioSource.PlayOneShot(JumpSound);
             animator.SetTrigger("Jump"); // Однократный триггер для анимации прыжка
             rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
         }
@@ -86,6 +90,7 @@ public class Hero : MonoBehaviour
         {
             if (currentSentry == null)
             {
+                audioSource.PlayOneShot(SentryUp);
                 SpawnSentry();
             }
             else
@@ -96,7 +101,7 @@ public class Hero : MonoBehaviour
         }
     }
 
-
+    [System.Obsolete]
     private void HandleFallAnimation()
     {
         if (animator != null)
@@ -153,8 +158,10 @@ public class Hero : MonoBehaviour
         if (animator != null) animator.SetTrigger("Die");
         GetComponent<Rigidbody2D>().simulated = false;
         GetComponent<Collider2D>().enabled = false;
+        HeartSystem.health -= healthPoints;
+;
         Destroy(gameObject, 3f);
-        Invoke("ReloadScene", 1f);
+        Invoke("ReloadScene", 2f);
     }
 
     private void ReloadScene()

@@ -3,11 +3,19 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] private int maxHealth = 3;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip deathSound;
     private int currentHealth;
 
     void Start()
     {
         currentHealth = maxHealth;
+
+        // Если AudioSource не назначен в инспекторе, попробуем получить его автоматически
+        if (audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -15,13 +23,13 @@ public class EnemyHealth : MonoBehaviour
         if (collision.gameObject == Hero.Instance.gameObject)
         {
             Hero.Instance.GetDamage();
-            TakeDamage(currentHealth);
+            TakeDamage();
         }
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage()
     {
-        currentHealth -= damage;
+        currentHealth -= 1;
         Debug.Log("Enemy hp = " + currentHealth);
         if (currentHealth <= 0)
         {
@@ -31,6 +39,13 @@ public class EnemyHealth : MonoBehaviour
 
     private void Die()
     {
-        Destroy(gameObject);
+        // Воспроизводим звук смерти, если он есть
+        if (deathSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(deathSound);
+        }
+
+        // Уничтожаем объект после проигрывания звука
+        Destroy(gameObject, deathSound != null ? deathSound.length : 0);
     }
 }

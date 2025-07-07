@@ -4,9 +4,24 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+    public static PauseMenu Instance { get; private set; }
+
     public bool PauseGame;
     public GameObject PauseGameMenu;
-    
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     void Update()
     {
         if (Input.GetKeyUp(KeyCode.Escape))

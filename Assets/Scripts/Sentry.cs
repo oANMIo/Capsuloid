@@ -8,6 +8,8 @@ public class Sentry : MonoBehaviour
     [SerializeField] private float detectionRange = 10f;
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject bulletPrefab;
+    public AudioSource audioSource;
+    [SerializeField] private AudioClip ShootSound;
 
     private int currentAmmo;
     private Transform enemy;
@@ -77,6 +79,7 @@ public class Sentry : MonoBehaviour
         Vector2 direction = (enemy.position - firePoint.position).normalized;
 
         Destroy(bullet, 5f);
+        audioSource.PlayOneShot(ShootSound);
         currentAmmo--;
         lastAttackTime = Time.time;
     }
