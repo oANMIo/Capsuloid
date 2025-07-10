@@ -11,6 +11,7 @@ public class Sentry : MonoBehaviour
     public AudioSource audioSource;
     [SerializeField] private AudioClip ShootSound;
 
+    private Animator animator;
     private int currentAmmo;
     private Transform enemy;
     private float lastAttackTime;
@@ -18,19 +19,11 @@ public class Sentry : MonoBehaviour
     void Start()
     {
         currentAmmo = maxAmmo;
-
-        if (firePoint == null)
-            Debug.LogError("FirePoint not assigned in Sentry script!", this);
-        if (bulletPrefab == null)
-            Debug.LogError("BulletPrefab not assigned in Sentry script!", this);
+        animator = GetComponent<Animator>();
     }
 
     void Update()
     {
-        // Добавим визуализацию радиуса обнаружения
-        Debug.DrawRay(transform.position, Vector2.right * detectionRange, Color.red);
-        Debug.DrawRay(transform.position, Vector2.left * detectionRange, Color.red);
-
         if (TryFindNearestEnemy()) // Теперь возвращает true только при наличии врага
         {
             if (currentAmmo > 0 && Time.time > lastAttackTime + attackCooldown)
@@ -63,11 +56,11 @@ public class Sentry : MonoBehaviour
         }
 
         enemy = closestEnemy;
-        return enemy != null; // Теперь правильно: true если враг найден
+        return enemy != null; 
     }
 
     public void Attack()
-    {
+    { 
         if (bulletPrefab == null || enemy == null || firePoint == null)
         {
             return;
@@ -82,11 +75,11 @@ public class Sentry : MonoBehaviour
         audioSource.PlayOneShot(ShootSound);
         currentAmmo--;
         lastAttackTime = Time.time;
+        animator.SetBool("SeeEnemy", true);
     }
 
     private void Die()
     {
-        // Здесь можно добавить анимацию смерти
-        Destroy(gameObject, 0.5f); // Задержка для проигрывания анимации
+        Destroy(gameObject, 0.5f);
     }
 }

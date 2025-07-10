@@ -12,7 +12,7 @@ public class Hero : MonoBehaviour
 
     [Header("Turret Settings")]
     [SerializeField] private GameObject sentryPrefab;
-    [SerializeField] private float spawnDistance = -2f;
+    [SerializeField] private float spawnDistance = -200f;
     [SerializeField] private KeyCode spawnKey = KeyCode.E;
 
     private GameObject currentSentry;
@@ -58,7 +58,7 @@ public class Hero : MonoBehaviour
             transform.position += new Vector3(movement, 0, 0) * speed * Time.deltaTime;
             animator.SetBool("Walk", true);
 
-            // Поворот персонажа
+            // Поворот
             if (movement > 0.1f) transform.localScale = new Vector3(-X, Y, 1);
             else if (movement < -0.1f) transform.localScale = new Vector3(X, Y, 1);
         }
@@ -68,10 +68,10 @@ public class Hero : MonoBehaviour
         }
 
         // Обработка прыжка через триггер
-        if (Input.GetKeyDown(KeyCode.UpArrow) && isGrounded)
+        if (Input.GetKeyDown(KeyCode.UpArrow) && isGrounded || (Input.GetKeyDown(KeyCode.W) && isGrounded || (Input.GetKeyDown(KeyCode.Space) && isGrounded)))
         {
             audioSource.PlayOneShot(JumpSound);
-            animator.SetTrigger("Jump"); // Однократный триггер для анимации прыжка
+            animator.SetTrigger("Jump"); 
             rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
         }
 
@@ -90,7 +90,6 @@ public class Hero : MonoBehaviour
         {
             if (currentSentry == null)
             {
-                audioSource.PlayOneShot(SentryUp);
                 SpawnSentry();
             }
             else
@@ -114,17 +113,19 @@ public class Hero : MonoBehaviour
     {
         if (!isGrounded)
         {
-            Debug.Log("Can't place sentry in air!");
             return;
         }
+
+        audioSource.PlayOneShot(SentryUp);
 
         Vector3 spawnDirection = transform.localScale.x > 0 ? Vector3.left : Vector3.right;
         Vector3 spawnPosition = transform.position + spawnDirection * spawnDistance;
 
+        // Проверяем, есть ли земля под местом спавна (чтобы турель не висела в воздухе)
         RaycastHit2D hit = Physics2D.Raycast(spawnPosition, Vector2.down, 2f, groundLayer);
         if (hit.collider != null)
         {
-            spawnPosition.y = hit.point.y + 0.1f;
+            spawnPosition.y = hit.point.y + 0.1f; // Небольшой отступ от земли
         }
 
         if (currentSentry != null) Destroy(currentSentry);
