@@ -45,7 +45,7 @@ public class WalkingMonster : MonoBehaviour
             }
             else
             {
-                animator.SetTrigger("Attack"); 
+                return; 
             }
         }
         else
