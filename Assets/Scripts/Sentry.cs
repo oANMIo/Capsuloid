@@ -15,6 +15,7 @@ public class Sentry : MonoBehaviour
     private int currentAmmo;
     private Transform enemy;
     private float lastAttackTime;
+    private bool isFacingLeft = true; // по умолчанию, или можно установить через метод
 
     void Start()
     {
@@ -59,17 +60,33 @@ public class Sentry : MonoBehaviour
         return enemy != null; 
     }
 
-    public void Attack()
-    { 
-        if (bulletPrefab == null || enemy == null || firePoint == null)
-        {
-            return;
-        }
+    public void SetFacingDirection(bool facingLeft)
+    {
+        Vector3 scale = transform.localScale;
+        scale.x = Mathf.Abs(scale.x) * (facingLeft ? -1 : 1);
+        transform.localScale = scale;
+    }
 
-        Debug.Log($"Attacking enemy: {enemy.name}");
+    public void Attack()
+    {
+        if (bulletPrefab == null || enemy == null || firePoint == null)
+            return;
 
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
-        Vector2 direction = (enemy.position - firePoint.position).normalized;
+        bool facingLeft = Mathf.Sign(transform.localScale.x) < 0;
+        Vector2 direction = facingLeft ? Vector2.left : Vector2.right;
+
+        Bullet bulletScript = bullet.GetComponent<Bullet>();
+        if (bulletScript != null)
+        {
+            bulletScript.SetDirection(direction);
+        }
+
+        // Если турель повернута влево, принудительно задаем пуле движение влево //убрать
+        if (isFacingLeft)
+        {
+            direction = Vector2.left;
+        }
 
         Destroy(bullet, 5f);
         audioSource.PlayOneShot(ShootSound);

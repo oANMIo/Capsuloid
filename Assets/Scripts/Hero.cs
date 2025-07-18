@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class Hero : MonoBehaviour
 {
@@ -94,7 +95,7 @@ public class Hero : MonoBehaviour
             }
             else
             {
-                Destroy(currentSentry); // Уничтожаем турель при повторном нажатии
+                Destroy(currentSentry); 
                 currentSentry = null;
             }
         }
@@ -116,20 +117,47 @@ public class Hero : MonoBehaviour
             return;
         }
 
-        audioSource.PlayOneShot(SentryUp);
+        // Если турель уже есть, удаляем её
+        if (currentSentry != null)
+        {
+            Destroy(currentSentry);
+            currentSentry = null;
+            // Можно сразу выйти, чтобы по повторному вызову — она удалялась
+            return;
+        }
 
         Vector3 spawnDirection = transform.localScale.x > 0 ? Vector3.left : Vector3.right;
         Vector3 spawnPosition = transform.position + spawnDirection * spawnDistance;
 
-        // Проверяем, есть ли земля под местом спавна (чтобы турель не висела в воздухе)
         RaycastHit2D hit = Physics2D.Raycast(spawnPosition, Vector2.down, 2f, groundLayer);
+
         if (hit.collider != null)
         {
-            spawnPosition.y = hit.point.y + 0.1f; // Небольшой отступ от земли
-        }
+            spawnPosition.y = hit.point.y + 0.1f;
 
-        if (currentSentry != null) Destroy(currentSentry);
-        currentSentry = Instantiate(sentryPrefab, spawnPosition, Quaternion.identity);
+            // Создаем турель в новой точке
+            currentSentry = Instantiate(sentryPrefab, spawnPosition, Quaternion.identity);
+
+            // Устанавливаем сторону
+            // Турель будет смотреть в сторону, противоположную персонажу
+            bool facingLeft = transform.localScale.x > 0;
+            Sentry sentryScript = currentSentry.GetComponent<Sentry>();
+            if (sentryScript != null)
+            {
+                sentryScript.SetFacingDirection(facingLeft);
+            }
+
+            // Воспроизводим звук
+            if (audioSource != null && SentryUp != null)
+            {
+                audioSource.PlayOneShot(SentryUp);
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Не удалось найти землю для турели");
+            // Не создаем турель, если земля не найдена
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -167,10 +195,8 @@ public class Hero : MonoBehaviour
 
     private void ReloadScene()
     {
-        // Получаем индекс текущей сцены и перезагружаем её
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
-        // Восстанавливаем нормальную скорость игры (на случай, если она была изменена)
         Time.timeScale = 1f;
     }
 }
