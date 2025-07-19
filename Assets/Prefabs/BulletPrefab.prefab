@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5426642422259880378}
   - component: {fileID: 469435509810320432}
   - component: {fileID: -6426369995872413801}
+  - component: {fileID: -645357802928382238}
   m_Layer: 0
   m_Name: BulletPrefab
   m_TagString: Untagged
@@ -104,6 +105,8 @@ MonoBehaviour:
   speed: 12.5
   lifetime: 3
   damage: 1
+  animator: {fileID: 0}
+  hitAnimationDuration: 0.2
 --- !u!61 &-6426369995872413801
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -150,3 +153,25 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.17, y: 0.18}
   m_EdgeRadius: 0
+--- !u!95 &-645357802928382238
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2554054305233689289}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0f1c6ceeed450694587699fa65cd32b7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

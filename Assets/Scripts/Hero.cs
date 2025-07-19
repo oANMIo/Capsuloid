@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class Hero : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class Hero : MonoBehaviour
 
     [Header("Turret Settings")]
     [SerializeField] private GameObject sentryPrefab;
-    [SerializeField] private float spawnDistance = -2f;
+    [SerializeField] private float spawnDistance = -200f;
     [SerializeField] private KeyCode spawnKey = KeyCode.E;
 
     private GameObject currentSentry;
@@ -27,6 +28,9 @@ public class Hero : MonoBehaviour
     [SerializeField] private float groundCheckRadius = 0.2f;
     [SerializeField] private LayerMask groundLayer;
     private bool isGrounded;
+    public AudioSource audioSource;
+    [SerializeField] private AudioClip JumpSound;
+    [SerializeField] private AudioClip SentryUp;
 
     void Start()
     {
@@ -34,7 +38,7 @@ public class Hero : MonoBehaviour
         animator = GetComponent<Animator>();
         if (winText != null) winText.gameObject.SetActive(false);
     }
-
+    [System.Obsolete]
     void Update()
     {
         Instance = this;
@@ -55,7 +59,7 @@ public class Hero : MonoBehaviour
             transform.position += new Vector3(movement, 0, 0) * speed * Time.deltaTime;
             animator.SetBool("Walk", true);
 
-            // Поворот персонажа
+            // Поворот
             if (movement > 0.1f) transform.localScale = new Vector3(-X, Y, 1);
             else if (movement < -0.1f) transform.localScale = new Vector3(X, Y, 1);
         }
@@ -65,9 +69,10 @@ public class Hero : MonoBehaviour
         }
 
         // Обработка прыжка через триггер
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (Input.GetKeyDown(KeyCode.UpArrow) && isGrounded || (Input.GetKeyDown(KeyCode.W) && isGrounded || (Input.GetKeyDown(KeyCode.Space) && isGrounded)))
         {
-            animator.SetTrigger("Jump"); // Однократный триггер для анимации прыжка
+            audioSource.PlayOneShot(JumpSound);
+            animator.SetTrigger("Jump"); 
             rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
         }
 
@@ -90,13 +95,13 @@ public class Hero : MonoBehaviour
             }
             else
             {
-                Destroy(currentSentry); // Уничтожаем турель при повторном нажатии
+                Destroy(currentSentry); 
                 currentSentry = null;
             }
         }
     }
 
-
+    [System.Obsolete]
     private void HandleFallAnimation()
     {
         if (animator != null)
@@ -109,7 +114,15 @@ public class Hero : MonoBehaviour
     {
         if (!isGrounded)
         {
-            Debug.Log("Can't place sentry in air!");
+            return;
+        }
+
+        // Если турель уже есть, удаляем её
+        if (currentSentry != null)
+        {
+            Destroy(currentSentry);
+            currentSentry = null;
+            // Можно сразу выйти, чтобы по повторному вызову — она удалялась
             return;
         }
 
@@ -117,13 +130,34 @@ public class Hero : MonoBehaviour
         Vector3 spawnPosition = transform.position + spawnDirection * spawnDistance;
 
         RaycastHit2D hit = Physics2D.Raycast(spawnPosition, Vector2.down, 2f, groundLayer);
+
         if (hit.collider != null)
         {
             spawnPosition.y = hit.point.y + 0.1f;
-        }
 
-        if (currentSentry != null) Destroy(currentSentry);
-        currentSentry = Instantiate(sentryPrefab, spawnPosition, Quaternion.identity);
+            // Создаем турель в новой точке
+            currentSentry = Instantiate(sentryPrefab, spawnPosition, Quaternion.identity);
+
+            // Устанавливаем сторону
+            // Турель будет смотреть в сторону, противоположную персонажу
+            bool facingLeft = transform.localScale.x > 0;
+            Sentry sentryScript = currentSentry.GetComponent<Sentry>();
+            if (sentryScript != null)
+            {
+                sentryScript.SetFacingDirection(facingLeft);
+            }
+
+            // Воспроизводим звук
+            if (audioSource != null && SentryUp != null)
+            {
+                audioSource.PlayOneShot(SentryUp);
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Не удалось найти землю для турели");
+            // Не создаем турель, если земля не найдена
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -153,16 +187,16 @@ public class Hero : MonoBehaviour
         if (animator != null) animator.SetTrigger("Die");
         GetComponent<Rigidbody2D>().simulated = false;
         GetComponent<Collider2D>().enabled = false;
+        HeartSystem.health -= healthPoints;
+;
         Destroy(gameObject, 3f);
-        Invoke("ReloadScene", 1f);
+        Invoke("ReloadScene", 2f);
     }
 
     private void ReloadScene()
     {
-        // Получаем индекс текущей сцены и перезагружаем её
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
-        // Восстанавливаем нормальную скорость игры (на случай, если она была изменена)
         Time.timeScale = 1f;
     }
 }
