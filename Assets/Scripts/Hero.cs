@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using System.Collections;
 
 public class Hero : MonoBehaviour
 {
@@ -32,13 +33,19 @@ public class Hero : MonoBehaviour
     [SerializeField] private AudioClip JumpSound;
     [SerializeField] private AudioClip SentryUp;
 
+    private SpriteRenderer spriteRenderer;
+
+    // Новый флаг для уязвимости
+    private bool isInvulnerable = false;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         if (winText != null) winText.gameObject.SetActive(false);
     }
-    [System.Obsolete]
+
     void Update()
     {
         Instance = this;
@@ -48,18 +55,13 @@ public class Hero : MonoBehaviour
         HandleFallAnimation();
     }
 
-    [System.Obsolete]
     private void HandleMovement()
     {
-        // Обработка движения по горизонтали
         float movement = Input.GetAxis("Horizontal");
-
         if (movement != 0)
         {
             transform.position += new Vector3(movement, 0, 0) * speed * Time.deltaTime;
             animator.SetBool("Walk", true);
-
-            // Поворот
             if (movement > 0.1f) transform.localScale = new Vector3(-X, Y, 1);
             else if (movement < -0.1f) transform.localScale = new Vector3(X, Y, 1);
         }
@@ -68,15 +70,13 @@ public class Hero : MonoBehaviour
             animator.SetBool("Walk", false);
         }
 
-        // Обработка прыжка через триггер
         if (Input.GetKeyDown(KeyCode.UpArrow) && isGrounded || (Input.GetKeyDown(KeyCode.W) && isGrounded || (Input.GetKeyDown(KeyCode.Space) && isGrounded)))
         {
             audioSource.PlayOneShot(JumpSound);
-            animator.SetTrigger("Jump"); 
+            animator.SetTrigger("Jump");
             rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
         }
 
-        // Дополнительно: синхронизируем параметр isGrounded в аниматоре
         animator.SetBool("IsGrounded", isGrounded);
     }
 
@@ -95,13 +95,12 @@ public class Hero : MonoBehaviour
             }
             else
             {
-                Destroy(currentSentry); 
+                Destroy(currentSentry);
                 currentSentry = null;
             }
         }
     }
 
-    [System.Obsolete]
     private void HandleFallAnimation()
     {
         if (animator != null)
@@ -117,12 +116,10 @@ public class Hero : MonoBehaviour
             return;
         }
 
-        // Если турель уже есть, удаляем её
         if (currentSentry != null)
         {
             Destroy(currentSentry);
             currentSentry = null;
-            // Можно сразу выйти, чтобы по повторному вызову — она удалялась
             return;
         }
 
@@ -134,12 +131,7 @@ public class Hero : MonoBehaviour
         if (hit.collider != null)
         {
             spawnPosition.y = hit.point.y + 0.1f;
-
-            // Создаем турель в новой точке
             currentSentry = Instantiate(sentryPrefab, spawnPosition, Quaternion.identity);
-
-            // Устанавливаем сторону
-            // Турель будет смотреть в сторону, противоположную персонажу
             bool facingLeft = transform.localScale.x > 0;
             Sentry sentryScript = currentSentry.GetComponent<Sentry>();
             if (sentryScript != null)
@@ -147,7 +139,6 @@ public class Hero : MonoBehaviour
                 sentryScript.SetFacingDirection(facingLeft);
             }
 
-            // Воспроизводим звук
             if (audioSource != null && SentryUp != null)
             {
                 audioSource.PlayOneShot(SentryUp);
@@ -156,7 +147,6 @@ public class Hero : MonoBehaviour
         else
         {
             Debug.LogWarning("Не удалось найти землю для турели");
-            // Не создаем турель, если земля не найдена
         }
     }
 
@@ -177,9 +167,13 @@ public class Hero : MonoBehaviour
 
     public void GetDamage()
     {
+        if (isInvulnerable)
+            return;
+
         healthPoints--;
         HeartSystem.health -= 1;
         if (healthPoints <= 0) Die();
+        else StartCoroutine(InvulnerabilityRoutine());
     }
 
     public void Die()
@@ -188,7 +182,6 @@ public class Hero : MonoBehaviour
         GetComponent<Rigidbody2D>().simulated = false;
         GetComponent<Collider2D>().enabled = false;
         HeartSystem.health -= healthPoints;
-;
         Destroy(gameObject, 3f);
         Invoke("ReloadScene", 2f);
     }
@@ -196,7 +189,30 @@ public class Hero : MonoBehaviour
     private void ReloadScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
         Time.timeScale = 1f;
+    }
+
+    private IEnumerator InvulnerabilityRoutine()
+    {
+        isInvulnerable = true;
+        float duration = 2f;
+        float elapsed = 0f;
+        float flickerInterval = 0.2f;
+
+        Color originalColor = spriteRenderer.color;
+
+        while (elapsed < duration)
+        {
+            // Чередуем прозрачность: 50% альфа (полупрозрачное состояние) и 100% (полностью видно)
+            float alpha = (Mathf.FloorToInt(elapsed / flickerInterval) % 2 == 0) ? 0.5f : 1f;
+            spriteRenderer.color = new Color(originalColor.r, originalColor.g, originalColor.b, alpha);
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        // Восстановить исходный цвет
+        spriteRenderer.color = originalColor;
+        isInvulnerable = false;
     }
 }

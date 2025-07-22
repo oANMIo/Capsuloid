@@ -114,7 +114,7 @@ public class WalkingMonster : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            animator.SetTrigger("Attack");
+            //animator.SetTrigger("Attack");
             var hero = collision.gameObject.GetComponent<Hero>();
             if (hero != null) hero.GetDamage();
         }
