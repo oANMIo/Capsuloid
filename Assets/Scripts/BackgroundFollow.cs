@@ -13,6 +13,7 @@ public class BackgroundFollow : MonoBehaviour
     [Header("Infinite Repeat")]
     [SerializeField] private bool infiniteHorizontal = true;
     [SerializeField] private bool infiniteVertical = false;
+    public SpriteRenderer backgroundSpriteRenderer;
 
     private Transform cameraTransform;
     private Vector3 lastCameraPosition;
@@ -29,6 +30,7 @@ public class BackgroundFollow : MonoBehaviour
         Sprite sprite = GetComponent<SpriteRenderer>().sprite;
         textureUnitSizeX = sprite.texture.width / sprite.pixelsPerUnit;
         textureUnitSizeY = sprite.texture.height / sprite.pixelsPerUnit;
+        FitSpriteToScreen();
     }
 
     void LateUpdate()
@@ -74,5 +76,30 @@ public class BackgroundFollow : MonoBehaviour
                     transform.position.z);
             }
         }
+    }
+
+    void FitSpriteToScreen()
+    {
+        if (backgroundSpriteRenderer == null)
+            return;
+
+        Sprite sprite = backgroundSpriteRenderer.sprite;
+        if (sprite == null)
+            return;
+
+        // Размеры спрайта в мире
+        Vector2 spriteSize = sprite.bounds.size;
+
+        // Размеры экрана в мирах (зависит от orthographic size у камеры)
+        Camera cam = Camera.main;
+        float screenHeight = 2f * cam.orthographicSize;
+        float screenWidth = screenHeight * cam.aspect;
+
+        // Расчет масштабов
+        Vector3 scale = backgroundSpriteRenderer.transform.localScale;
+        scale.x = screenWidth / spriteSize.x;
+        scale.y = screenHeight / spriteSize.y;
+
+        backgroundSpriteRenderer.transform.localScale = scale;
     }
 }
