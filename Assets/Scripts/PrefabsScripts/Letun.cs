@@ -32,11 +32,11 @@ public class Letun : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             // Наносим урон игроку
-            Hero player = other.GetComponent<Hero>();
-            if (player != null)
+            Hero hero = other.GetComponent<Hero>();
+            if (hero != null)
             {
-                player.GetDamage();
-
+                hero.GetDamage();
+                hero.ApplyKnockbackFromPosition(transform.position);
                 // Визуальный эффект
                 if (hitEffect != null)
                 {

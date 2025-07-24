@@ -71,6 +71,7 @@ public class Polzun : MonoBehaviour
         {
             var hero = collision.gameObject.GetComponent<Hero>();
             if (hero != null) hero.GetDamage();
+            hero.ApplyKnockbackFromPosition(transform.position);
         }
     }
 }

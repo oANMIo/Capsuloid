@@ -19,6 +19,9 @@ public class Hero : MonoBehaviour
 
     private GameObject currentSentry;
     public static Hero Instance { get; set; }
+    public float knockbackStrength = 15f; // Настраиваемая сила отбрасывания
+    public bool wasJumpingUp = false;
+    public bool isDead = false;
 
     private Rigidbody2D rb;
     private Animator animator;
@@ -57,6 +60,8 @@ public class Hero : MonoBehaviour
 
     private void HandleMovement()
     {
+        if (isDead)
+            return;
         float movement = Input.GetAxis("Horizontal");
         if (movement != 0)
         {
@@ -172,15 +177,42 @@ public class Hero : MonoBehaviour
 
         healthPoints--;
         HeartSystem.health -= 1;
+        ApplyKnockbackFromPosition(transform.position);
         if (healthPoints <= 0) Die();
         else StartCoroutine(InvulnerabilityRoutine());
     }
 
+    public void ApplyKnockbackFromPosition(Vector2 attackerPosition)
+    {
+        if (rb != null)
+        {
+            Vector2 direction;
+            if (wasJumpingUp)
+            {
+                // Отталкивать вверх, если прыгал
+                direction = Vector2.up;
+            }
+            else
+            {
+                // Отталкиваем в сторону от врага
+                direction = (transform.position - (Vector3)attackerPosition).normalized;
+            }
+
+            rb.AddForce(direction * knockbackStrength, ForceMode2D.Impulse);
+
+            // После использования сбрасываем флаг
+            wasJumpingUp = false;
+        }
+    }
+
     public void Die()
     {
+        isDead = true;
         if (animator != null) animator.SetTrigger("Die");
-        GetComponent<Rigidbody2D>().simulated = false;
-        GetComponent<Collider2D>().enabled = false;
+        var rb = GetComponent<Rigidbody2D>();
+        if (rb != null) rb.simulated = false;
+        var collider = GetComponent<Collider2D>();
+        if (collider != null) collider.enabled = false;
         HeartSystem.health -= healthPoints;
         Destroy(gameObject, 3f);
         Invoke("ReloadScene", 2f);

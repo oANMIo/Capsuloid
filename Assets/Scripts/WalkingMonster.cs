@@ -45,7 +45,7 @@ public class WalkingMonster : MonoBehaviour
             }
             else
             {
-                return; 
+                return;
             }
         }
         else
@@ -114,9 +114,13 @@ public class WalkingMonster : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            //animator.SetTrigger("Attack");
             var hero = collision.gameObject.GetComponent<Hero>();
-            if (hero != null) hero.GetDamage();
+            if (hero != null)
+            {
+                // Передаем позицию врага
+                hero.GetDamage();
+                hero.ApplyKnockbackFromPosition(transform.position);
+            }
         }
     }
 }

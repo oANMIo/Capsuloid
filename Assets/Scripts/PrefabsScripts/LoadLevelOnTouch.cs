@@ -7,12 +7,18 @@ public class LoadLevelOnTouch : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            LoadScene();
+            LoadNextScene();
         }
     }
 
-    private void LoadScene()
+    private void LoadNextScene()
     {
-        SceneManager.LoadScene(2);
+        // Получаем текущий номер сцены
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        // Инкрементируем его на 1
+        int nextSceneIndex = currentSceneIndex + 1;
+
+        // Загружаем следующую сцену
+        SceneManager.LoadScene(nextSceneIndex);
     }
 }
