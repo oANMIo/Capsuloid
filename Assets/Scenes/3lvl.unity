@@ -213,6 +213,46 @@ Tilemap:
   m_GameObject: {fileID: 129073712}
   m_Enabled: 1
   m_Tiles:
+  - first: {x: 11, y: -51, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 3
+      m_TileSpriteIndex: 3
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+  - first: {x: 12, y: -51, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 4
+      m_TileSpriteIndex: 4
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+  - first: {x: 11, y: -50, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 5
+      m_TileSpriteIndex: 5
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+  - first: {x: 12, y: -50, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 6
+      m_TileSpriteIndex: 6
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
   - first: {x: 17, y: -15, z: 0}
     second:
       serializedVersion: 2
@@ -281,6 +321,14 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 7b1c0872c0a15a740a2525d058df8b05, type: 2}
   - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: e242f0786a231f447a8175fc4943c21b, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: af54ac84a292488468d28894c125fcc5, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 25c2192fd78d511439c1062bf17fdf08, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 10ab7c6ed7fea6f438dc5c0aa39c1760, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 8aba92327197b8247bc97cf1f8f8225d, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 2
     m_Data: {fileID: -1344796773, guid: 50ba2078dcf78104499483111fd4a00e, type: 3}
@@ -288,8 +336,16 @@ Tilemap:
     m_Data: {fileID: 145892798, guid: 50ba2078dcf78104499483111fd4a00e, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: -524184454, guid: 50ba2078dcf78104499483111fd4a00e, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 1939833262, guid: 588ee5f3e02b49143ab2845305677027, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: -1626138342, guid: 588ee5f3e02b49143ab2845305677027, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 1632377368, guid: 588ee5f3e02b49143ab2845305677027, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 1996002483, guid: 588ee5f3e02b49143ab2845305677027, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 6
+  - m_RefCount: 10
     m_Data:
       e00: 1
       e01: 0
@@ -308,13 +364,13 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 6
+  - m_RefCount: 10
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Origin: {x: 0, y: -15, z: 0}
-  m_Size: {x: 23, y: 15, z: 1}
+  m_Origin: {x: 0, y: -51, z: 0}
+  m_Size: {x: 23, y: 51, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -45974,6 +46030,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1491301303}
+  - {fileID: 1153895211}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &947934910
@@ -46058,13 +46115,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1153895209}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1837866881}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 859694642}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1353055456
 GameObject:
@@ -49453,7 +49510,6 @@ SceneRoots:
   - {fileID: 1384009234}
   - {fileID: 947934912}
   - {fileID: 1860228521}
-  - {fileID: 1153895211}
   - {fileID: 859694642}
   - {fileID: 540077048}
   - {fileID: 829679256}
