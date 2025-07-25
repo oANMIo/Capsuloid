@@ -69,6 +69,7 @@ public class Hero : MonoBehaviour
             animator.SetBool("Walk", true);
             if (movement > 0.1f) transform.localScale = new Vector3(-X, Y, 1);
             else if (movement < -0.1f) transform.localScale = new Vector3(X, Y, 1);
+            audioSource.PlayOneShot(JumpSound);
         }
         else
         {

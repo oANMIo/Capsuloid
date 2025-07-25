@@ -47,10 +47,9 @@ public class HeartSystem : MonoBehaviour
         }
     }
 
-    // Проверяем, является ли сцена игровой (индексы 1, 2, 3)
     private bool IsGameScene(int sceneIndex)
     {
-        return sceneIndex >= 1 && sceneIndex <= 3;
+        return sceneIndex >= 1;
     }
 
     private void InitializeHearts()

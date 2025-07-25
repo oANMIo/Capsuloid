@@ -11,7 +11,6 @@ public class WinZone : MonoBehaviour
         {
             Time.timeScale = 0f; 
             levelCompleteMenu.SetActive(true);
-
         }
     }
 
