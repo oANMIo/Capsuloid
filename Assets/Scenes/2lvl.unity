@@ -494,7 +494,7 @@ MonoBehaviour:
   trackingSpeed: 3
   maxSpeedFactor: 2
   deadZoneRadius: 1.5
-  smoothTime: 0.3
+  smoothTime: 1
 --- !u!1 &532117383 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5273225735589405556, guid: 9cd78c6d911f4334a9ea99fee9c18c9b, type: 3}
@@ -510,8 +510,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 8b742b5f04528a7469892907c58d1ced, type: 3}
-  m_Resource: {fileID: 8300000, guid: 8b742b5f04528a7469892907c58d1ced, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 9014ce5d8567cf24ebea798279ff110e, type: 3}
+  m_Resource: {fileID: 8300000, guid: 9014ce5d8567cf24ebea798279ff110e, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.05
   m_Pitch: 1
@@ -5269,7 +5269,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -7281578310264791658, guid: adaa3a7ee04634040b6c1fc9a076093f, type: 3}
+  m_Sprite: {fileID: -4215819229188857254, guid: ddf7e8e46d039794186d97673c4eecfd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -134351,7 +134351,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -3090014242458757922, guid: adaa3a7ee04634040b6c1fc9a076093f, type: 3}
+  m_Sprite: {fileID: -1061305188658282811, guid: ddf7e8e46d039794186d97673c4eecfd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -134431,7 +134431,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -2
-  m_Sprite: {fileID: -8924288320156063264, guid: 05c81aa4ab7d30f45bfc9d17aed98b7e, type: 3}
+  m_Sprite: {fileID: 4087883705297360163, guid: e4810dc134eae0c46a12146374add6b5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -134452,7 +134452,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -18.09, y: 9.98, z: 0}
-  m_LocalScale: {x: 2.2, y: 2, z: 1.1674125}
+  m_LocalScale: {x: 2.6, y: 2.2, z: 1.1674125}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

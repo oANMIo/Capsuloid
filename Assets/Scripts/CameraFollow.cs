@@ -7,7 +7,7 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private float trackingSpeed = 3f;
     [SerializeField] private float maxSpeedFactor = 2f;
     [SerializeField] private float deadZoneRadius = 1.5f;
-    [SerializeField] private float smoothTime = 0.3f; // Новая переменная для плавности
+    [SerializeField] private float smoothTime = 1f; // Новая переменная для плавности
 
     private Camera cam;
     private Vector3 velocity;

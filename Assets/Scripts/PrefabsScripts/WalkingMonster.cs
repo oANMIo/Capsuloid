@@ -66,7 +66,7 @@ public class WalkingMonster : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
 
         // Проверяем достижение границы
-        if (Vector3.Distance(transform.position, target) < 1f)
+        if (Vector3.Distance(transform.position, target) < 2f)
         {
             movingRight = !movingRight; // Меняем направление
         }
