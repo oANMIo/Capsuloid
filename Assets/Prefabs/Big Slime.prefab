@@ -128,9 +128,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  moveDistance: 3
+  moveDistance: 4
   startMovingRight: 1
-  chaseRange: 5
+  chaseRange: 7
   attackRange: 1
 --- !u!114 &3870078567467289141
 MonoBehaviour:

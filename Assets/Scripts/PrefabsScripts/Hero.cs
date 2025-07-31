@@ -19,7 +19,7 @@ public class Hero : MonoBehaviour
 
     private GameObject currentSentry;
     public static Hero Instance { get; set; }
-    public float knockbackStrength = 15f; // Настраиваемая сила отбрасывания
+    public float knockbackStrength = 8f; // Настраиваемая сила отбрасывания
     public bool wasJumpingUp = false;
     public bool isDead = false;
 
@@ -38,7 +38,7 @@ public class Hero : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
-    // Новый флаг для уязвимости
+    // Флаг для уязвимости
     private bool isInvulnerable = false;
 
     void Start()
@@ -49,6 +49,7 @@ public class Hero : MonoBehaviour
         if (winText != null) winText.gameObject.SetActive(false);
     }
 
+    [System.Obsolete]
     void Update()
     {
         Instance = this;
@@ -107,6 +108,7 @@ public class Hero : MonoBehaviour
         }
     }
 
+    [System.Obsolete]
     private void HandleFallAnimation()
     {
         if (animator != null)

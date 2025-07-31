@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TutorialToggle : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class TutorialToggle : MonoBehaviour
         tutorialPanel.SetActive(false);
         Time.timeScale = 1;
         tutorialActive = false;
+
+        // Проверка индекса сцены и установка активности speechText
+        SetSpeechTextVisibility();
     }
 
     void Update()
@@ -33,7 +37,21 @@ public class TutorialToggle : MonoBehaviour
                 tutorialPanel.SetActive(false);
                 Time.timeScale = 1;
                 tutorialActive = false;
+
+                // При закрытии можно снова проверять сцену (если скрипт остаётся активным)
+                SetSpeechTextVisibility();
             }
+        }
+    }
+
+    private void SetSpeechTextVisibility()
+    {
+        // Проверяем индекс текущей сцены
+        if (speechText != null)
+        {
+            int sceneIndex = SceneManager.GetActiveScene().buildIndex;
+            // Делаем видимым только на сцене с индексом 1
+            speechText.SetActive(sceneIndex == 1);
         }
     }
 }

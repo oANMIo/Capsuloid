@@ -35,7 +35,7 @@ public class HeartSystem : MonoBehaviour
 
     private void OnSceneChanged(Scene previousScene, Scene newScene)
     {
-        // ¬ключаем Canvas только на сценах с индексами 1, 2, 3
+        // место дл€ модификации скрипта
         if (IsGameScene(newScene.buildIndex))
         {
             heartsCanvas.enabled = true;

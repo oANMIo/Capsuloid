@@ -133,6 +133,9 @@ MonoBehaviour:
   sentryPrefab: {fileID: 7495627791903151890, guid: fb67b1af0d817534aa577721d8634473, type: 3}
   spawnDistance: 2
   spawnKey: 101
+  knockbackStrength: 8
+  wasJumpingUp: 0
+  isDead: 0
   winText: {fileID: 0}
   groundCheck: {fileID: 8087306964688645460}
   groundCheckRadius: 0.5

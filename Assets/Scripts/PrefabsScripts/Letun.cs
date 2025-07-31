@@ -12,19 +12,35 @@ public class Letun : MonoBehaviour
 
     private Vector3 startPosition;
     private bool movingUp = true;
-    private float randomOffset; // Для вариативности движения
+    private float targetY;
 
     void Start()
     {
         startPosition = transform.position;
-        randomOffset = Random.Range(0f, 2f * Mathf.PI); // Случайное смещение фазы
+        // задаем начальную цель (вверх или вниз)
+        targetY = startPosition.y + movementHeight;
     }
 
     void Update()
     {
-        // Плавное движение вверх-вниз по синусоиде
-        float newY = startPosition.y + Mathf.Sin((Time.time + randomOffset) * movementSpeed) * movementHeight;
-        transform.position = new Vector3(transform.position.x, newY, transform.position.z);
+        // Перемещаем объект к целевой позиции
+        float step = movementSpeed * Time.deltaTime;
+        transform.position = new Vector3(transform.position.x, Mathf.MoveTowards(transform.position.y, targetY, step), transform.position.z);
+
+        // Проверяем достигли ли мы точки назначения и меняем направление
+        if (Mathf.Approximately(transform.position.y, targetY))
+        {
+            // меняем целевую позицию
+            if (movingUp)
+            {
+                targetY = startPosition.y - movementHeight;
+            }
+            else
+            {
+                targetY = startPosition.y + movementHeight;
+            }
+            movingUp = !movingUp;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
