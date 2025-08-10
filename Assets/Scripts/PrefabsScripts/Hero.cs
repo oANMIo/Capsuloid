@@ -1,13 +1,13 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
 using System.Collections;
 
 public class Hero : MonoBehaviour
 {
     private const int X = 7;
     private const int Y = 7;
+
     [SerializeField] private float speed = 3f;
     [SerializeField] private float jumpForce = 20f;
     [SerializeField] private int healthPoints = 3;
@@ -19,34 +19,10 @@ public class Hero : MonoBehaviour
 
     private GameObject currentSentry;
     public static Hero Instance { get; set; }
-<<<<<<< Updated upstream:Assets/Scripts/PrefabsScripts/Hero.cs
-<<<<<<< Updated upstream:Assets/Scripts/PrefabsScripts/Hero.cs
-<<<<<<< Updated upstream:Assets/Scripts/PrefabsScripts/Hero.cs
-<<<<<<< Updated upstream:Assets/Scripts/PrefabsScripts/Hero.cs
-<<<<<<< Updated upstream:Assets/Scripts/PrefabsScripts/Hero.cs
-    public float knockbackStrength = 8f; // Настраиваемая сила отбрасывания
+
+    public float knockbackStrength = 8f;
     public bool wasJumpingUp = false;
     public bool isDead = false;
-=======
-    public float knockbackStrength = 5f;
-    public bool wasJumpingUp = false;
->>>>>>> Stashed changes:Assets/Scripts/Hero.cs
-=======
-    public float knockbackStrength = 5f;
-    public bool wasJumpingUp = false;
->>>>>>> Stashed changes:Assets/Scripts/Hero.cs
-=======
-    public float knockbackStrength = 5f;
-    public bool wasJumpingUp = false;
->>>>>>> Stashed changes:Assets/Scripts/Hero.cs
-=======
-    public float knockbackStrength = 5f;
-    public bool wasJumpingUp = false;
->>>>>>> Stashed changes:Assets/Scripts/Hero.cs
-=======
-    public float knockbackStrength = 5f;
-    public bool wasJumpingUp = false;
->>>>>>> Stashed changes:Assets/Scripts/Hero.cs
 
     private Rigidbody2D rb;
     private Animator animator;
@@ -57,6 +33,7 @@ public class Hero : MonoBehaviour
     [SerializeField] private float groundCheckRadius = 0.2f;
     [SerializeField] private LayerMask groundLayer;
     private bool isGrounded;
+
     public AudioSource audioSource;
     [SerializeField] private AudioClip JumpSound;
     [SerializeField] private AudioClip SentryUp;
@@ -66,18 +43,25 @@ public class Hero : MonoBehaviour
     // Флаг для уязвимости
     private bool isInvulnerable = false;
 
+    private void Awake()
+    {
+        // Безопасная инициализация
+        Instance = this;
+    }
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        if (winText != null) winText.gameObject.SetActive(false);
+
+        if (winText != null)
+            winText.gameObject.SetActive(false);
     }
 
     [System.Obsolete]
     void Update()
     {
-        Instance = this;
         CheckGrounded();
         HandleMovement();
         HandleTurret();
@@ -88,36 +72,50 @@ public class Hero : MonoBehaviour
     {
         if (isDead)
             return;
+
         float movement = Input.GetAxis("Horizontal");
-        if (movement != 0)
+        if (movement != 0f)
         {
-            transform.position += new Vector3(movement, 0, 0) * speed * Time.deltaTime;
-            animator.SetBool("Walk", true);
-            if (movement > 0.1f) transform.localScale = new Vector3(-X, Y, 1);
-            else if (movement < -0.1f) transform.localScale = new Vector3(X, Y, 1);
+            transform.position += new Vector3(movement, 0f, 0f) * speed * Time.deltaTime;
+            animator?.SetBool("Walk", true);
+
+            // Разворот спрайта в зависимости от направления
+            if (movement > 0.1f)
+                transform.localScale = new Vector3(-X, Y, 1);
+            else if (movement < -0.1f)
+                transform.localScale = new Vector3(X, Y, 1);
         }
         else
         {
-            animator.SetBool("Walk", false);
+            animator?.SetBool("Walk", false);
         }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) && isGrounded || (Input.GetKeyDown(KeyCode.W) && isGrounded || (Input.GetKeyDown(KeyCode.Space) && isGrounded)))
+        bool jumpPressed = (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space));
+        if (jumpPressed && isGrounded)
         {
-            audioSource.PlayOneShot(JumpSound);
-            animator.SetTrigger("Jump");
-            rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+            audioSource?.PlayOneShot(JumpSound);
+            animator?.SetTrigger("Jump");
+            rb?.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
         }
 
-        animator.SetBool("IsGrounded", isGrounded);
+        if (animator != null)
+            animator.SetBool("IsGrounded", isGrounded);
     }
 
     private void CheckGrounded()
     {
+        if (groundCheck == null)
+        {
+            isGrounded = true;
+            return;
+        }
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
     }
 
     private void HandleTurret()
     {
+        if (spawnKey == KeyCode.None) return;
+
         if (Input.GetKeyDown(spawnKey))
         {
             if (currentSentry == null)
@@ -137,16 +135,14 @@ public class Hero : MonoBehaviour
     {
         if (animator != null)
         {
-            animator.SetBool("Fall", !isGrounded && rb.velocity.y < 0);
+            animator.SetBool("Fall", !isGrounded && rb != null && rb.velocity.y < 0);
         }
     }
 
     private void SpawnSentry()
     {
-        if (!isGrounded)
-        {
+        if (!isGrounded || sentryPrefab == null)
             return;
-        }
 
         if (currentSentry != null)
         {
@@ -164,6 +160,7 @@ public class Hero : MonoBehaviour
         {
             spawnPosition.y = hit.point.y + 0.1f;
             currentSentry = Instantiate(sentryPrefab, spawnPosition, Quaternion.identity);
+
             bool facingLeft = transform.localScale.x > 0;
             Sentry sentryScript = currentSentry.GetComponent<Sentry>();
             if (sentryScript != null)
@@ -184,7 +181,8 @@ public class Hero : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("WinZone")) WinGame();
+        if (collision.CompareTag("WinZone"))
+            WinGame();
     }
 
     private void WinGame()
@@ -205,90 +203,51 @@ public class Hero : MonoBehaviour
         healthPoints--;
         HeartSystem.health -= 1;
         ApplyKnockbackFromPosition(transform.position);
-        if (healthPoints <= 0) Die();
-        else StartCoroutine(InvulnerabilityRoutine());
+        if (healthPoints <= 0)
+            Die();
+        else
+            StartCoroutine(InvulnerabilityRoutine());
     }
 
     public void ApplyKnockbackFromPosition(Vector2 attackerPosition)
     {
-        if (rb != null)
+        if (rb == null)
+            return;
+
+        Vector2 direction;
+
+        if (wasJumpingUp)
         {
-            Vector2 direction;
-            if (wasJumpingUp)
-            {
-<<<<<<< Updated upstream:Assets/Scripts/PrefabsScripts/Hero.cs
-<<<<<<< Updated upstream:Assets/Scripts/PrefabsScripts/Hero.cs
-<<<<<<< Updated upstream:Assets/Scripts/PrefabsScripts/Hero.cs
-<<<<<<< Updated upstream:Assets/Scripts/PrefabsScripts/Hero.cs
-<<<<<<< Updated upstream:Assets/Scripts/PrefabsScripts/Hero.cs
-                // Отталкивать вверх, если прыгал
-=======
->>>>>>> Stashed changes:Assets/Scripts/Hero.cs
-=======
->>>>>>> Stashed changes:Assets/Scripts/Hero.cs
-=======
->>>>>>> Stashed changes:Assets/Scripts/Hero.cs
-=======
->>>>>>> Stashed changes:Assets/Scripts/Hero.cs
-=======
->>>>>>> Stashed changes:Assets/Scripts/Hero.cs
-                direction = Vector2.up;
-            }
-            else
-            {
-<<<<<<< Updated upstream:Assets/Scripts/PrefabsScripts/Hero.cs
-<<<<<<< Updated upstream:Assets/Scripts/PrefabsScripts/Hero.cs
-<<<<<<< Updated upstream:Assets/Scripts/PrefabsScripts/Hero.cs
-<<<<<<< Updated upstream:Assets/Scripts/PrefabsScripts/Hero.cs
-<<<<<<< Updated upstream:Assets/Scripts/PrefabsScripts/Hero.cs
-                // Отталкиваем в сторону от врага
-                direction = (transform.position - (Vector3)attackerPosition).normalized;
-            }
-
-            rb.AddForce(direction * knockbackStrength, ForceMode2D.Impulse);
-
-            // После использования сбрасываем флаг
-            wasJumpingUp = false;
+            direction = Vector2.up;
         }
-=======
-=======
->>>>>>> Stashed changes:Assets/Scripts/Hero.cs
-=======
->>>>>>> Stashed changes:Assets/Scripts/Hero.cs
-=======
->>>>>>> Stashed changes:Assets/Scripts/Hero.cs
-=======
->>>>>>> Stashed changes:Assets/Scripts/Hero.cs
-                direction = (transform.position - (Vector3)attackerPosition).normalized;
-            }
-            rb.AddForce(direction * knockbackStrength, ForceMode2D.Impulse);
+        else
+        {
+            // Отталкиваем от атакующего по направлению от него к игроку
+            direction = ((Vector2)transform.position - attackerPosition).normalized;
         }
 
-        // После применения эффекта сбрасываем флаг
+        rb.AddForce(direction * knockbackStrength, ForceMode2D.Impulse);
+
+        // После использования сбрасываем флаг
         wasJumpingUp = false;
-<<<<<<< Updated upstream:Assets/Scripts/PrefabsScripts/Hero.cs
-<<<<<<< Updated upstream:Assets/Scripts/PrefabsScripts/Hero.cs
-<<<<<<< Updated upstream:Assets/Scripts/PrefabsScripts/Hero.cs
-<<<<<<< Updated upstream:Assets/Scripts/PrefabsScripts/Hero.cs
->>>>>>> Stashed changes:Assets/Scripts/Hero.cs
-=======
->>>>>>> Stashed changes:Assets/Scripts/Hero.cs
-=======
->>>>>>> Stashed changes:Assets/Scripts/Hero.cs
-=======
->>>>>>> Stashed changes:Assets/Scripts/Hero.cs
-=======
->>>>>>> Stashed changes:Assets/Scripts/Hero.cs
     }
 
     public void Die()
     {
+        if (isDead)
+            return;
+
         isDead = true;
-        if (animator != null) animator.SetTrigger("Die");
-        var rb = GetComponent<Rigidbody2D>();
-        if (rb != null) rb.simulated = false;
-        var collider = GetComponent<Collider2D>();
-        if (collider != null) collider.enabled = false;
+        animator?.SetTrigger("Die");
+
+        Rigidbody2D rb2 = GetComponent<Rigidbody2D>();
+        if (rb2 != null)
+            rb2.simulated = false;
+
+        Collider2D collider = GetComponent<Collider2D>();
+        if (collider != null)
+            collider.enabled = false;
+
         HeartSystem.health -= healthPoints;
         Destroy(gameObject, 3f);
         Invoke("ReloadScene", 2f);
@@ -307,20 +266,23 @@ public class Hero : MonoBehaviour
         float elapsed = 0f;
         float flickerInterval = 0.2f;
 
-        Color originalColor = spriteRenderer.color;
+        Color originalColor = spriteRenderer != null ? spriteRenderer.color : Color.white;
 
         while (elapsed < duration)
         {
-            // Чередуем прозрачность: 50% альфа (полупрозрачное состояние) и 100% (полностью видно)
+            // 50% прозрачность чередованием
             float alpha = (Mathf.FloorToInt(elapsed / flickerInterval) % 2 == 0) ? 0.5f : 1f;
-            spriteRenderer.color = new Color(originalColor.r, originalColor.g, originalColor.b, alpha);
+            if (spriteRenderer != null)
+                spriteRenderer.color = new Color(originalColor.r, originalColor.g, originalColor.b, alpha);
 
             elapsed += Time.deltaTime;
             yield return null;
         }
 
         // Восстановить исходный цвет
-        spriteRenderer.color = originalColor;
+        if (spriteRenderer != null)
+            spriteRenderer.color = originalColor;
+
         isInvulnerable = false;
     }
 }
