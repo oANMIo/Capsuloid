@@ -23,9 +23,14 @@ public class Hero : MonoBehaviour
 <<<<<<< Updated upstream:Assets/Scripts/PrefabsScripts/Hero.cs
 <<<<<<< Updated upstream:Assets/Scripts/PrefabsScripts/Hero.cs
 <<<<<<< Updated upstream:Assets/Scripts/PrefabsScripts/Hero.cs
+<<<<<<< Updated upstream:Assets/Scripts/PrefabsScripts/Hero.cs
     public float knockbackStrength = 8f; // Настраиваемая сила отбрасывания
     public bool wasJumpingUp = false;
     public bool isDead = false;
+=======
+    public float knockbackStrength = 5f;
+    public bool wasJumpingUp = false;
+>>>>>>> Stashed changes:Assets/Scripts/Hero.cs
 =======
     public float knockbackStrength = 5f;
     public bool wasJumpingUp = false;
@@ -215,7 +220,10 @@ public class Hero : MonoBehaviour
 <<<<<<< Updated upstream:Assets/Scripts/PrefabsScripts/Hero.cs
 <<<<<<< Updated upstream:Assets/Scripts/PrefabsScripts/Hero.cs
 <<<<<<< Updated upstream:Assets/Scripts/PrefabsScripts/Hero.cs
+<<<<<<< Updated upstream:Assets/Scripts/PrefabsScripts/Hero.cs
                 // Отталкивать вверх, если прыгал
+=======
+>>>>>>> Stashed changes:Assets/Scripts/Hero.cs
 =======
 >>>>>>> Stashed changes:Assets/Scripts/Hero.cs
 =======
@@ -228,6 +236,7 @@ public class Hero : MonoBehaviour
             }
             else
             {
+<<<<<<< Updated upstream:Assets/Scripts/PrefabsScripts/Hero.cs
 <<<<<<< Updated upstream:Assets/Scripts/PrefabsScripts/Hero.cs
 <<<<<<< Updated upstream:Assets/Scripts/PrefabsScripts/Hero.cs
 <<<<<<< Updated upstream:Assets/Scripts/PrefabsScripts/Hero.cs
@@ -248,6 +257,8 @@ public class Hero : MonoBehaviour
 >>>>>>> Stashed changes:Assets/Scripts/Hero.cs
 =======
 >>>>>>> Stashed changes:Assets/Scripts/Hero.cs
+=======
+>>>>>>> Stashed changes:Assets/Scripts/Hero.cs
                 direction = (transform.position - (Vector3)attackerPosition).normalized;
             }
             rb.AddForce(direction * knockbackStrength, ForceMode2D.Impulse);
@@ -258,6 +269,9 @@ public class Hero : MonoBehaviour
 <<<<<<< Updated upstream:Assets/Scripts/PrefabsScripts/Hero.cs
 <<<<<<< Updated upstream:Assets/Scripts/PrefabsScripts/Hero.cs
 <<<<<<< Updated upstream:Assets/Scripts/PrefabsScripts/Hero.cs
+<<<<<<< Updated upstream:Assets/Scripts/PrefabsScripts/Hero.cs
+>>>>>>> Stashed changes:Assets/Scripts/Hero.cs
+=======
 >>>>>>> Stashed changes:Assets/Scripts/Hero.cs
 =======
 >>>>>>> Stashed changes:Assets/Scripts/Hero.cs

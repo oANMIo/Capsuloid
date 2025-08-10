@@ -13,6 +13,7 @@ EditorBuildSettings:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     path: Assets/Scenes/1lvl.unity
     guid: cc82b156bd5ba8349ad6fe03dd61a8e5
   - enabled: 1
@@ -37,6 +38,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Lvl1.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
+=======
+    path: Assets/Scenes/Lvl1.unity
+    guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+>>>>>>> Stashed changes
 =======
     path: Assets/Scenes/Lvl1.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
