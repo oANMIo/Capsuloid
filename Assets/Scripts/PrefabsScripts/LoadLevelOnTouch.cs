@@ -1,24 +1,29 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class LoadLevelOnTouch : MonoBehaviour
 {
+    private Animator animator;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            LoadNextScene();
+            LoadNextLevel();
         }
     }
 
-    private void LoadNextScene()
+    private void LoadNextLevel()
     {
-        // Получаем текущий номер сцены
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        // Инкрементируем его на 1
         int nextSceneIndex = currentSceneIndex + 1;
 
-        // Загружаем следующую сцену
-        SceneManager.LoadScene(nextSceneIndex);
+        {
+            animator = GetComponent<Animator>();
+            animator.Play("Animation 1");
+            SceneManager.LoadScene(nextSceneIndex);
+        }
     }
+
 }

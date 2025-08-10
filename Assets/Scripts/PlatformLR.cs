@@ -29,4 +29,19 @@ public class PlatformLR : MonoBehaviour
                 movingRight = true;
         }
     }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.transform.SetParent(this.transform);
+        }
+    }
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.transform.SetParent(null);
+        }
+    }
 }
