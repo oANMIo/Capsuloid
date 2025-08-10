@@ -19,9 +19,14 @@ public class Hero : MonoBehaviour
 
     private GameObject currentSentry;
     public static Hero Instance { get; set; }
+<<<<<<< Updated upstream:Assets/Scripts/PrefabsScripts/Hero.cs
     public float knockbackStrength = 8f; // Настраиваемая сила отбрасывания
     public bool wasJumpingUp = false;
     public bool isDead = false;
+=======
+    public float knockbackStrength = 5f;
+    public bool wasJumpingUp = false;
+>>>>>>> Stashed changes:Assets/Scripts/Hero.cs
 
     private Rigidbody2D rb;
     private Animator animator;
@@ -191,11 +196,15 @@ public class Hero : MonoBehaviour
             Vector2 direction;
             if (wasJumpingUp)
             {
+<<<<<<< Updated upstream:Assets/Scripts/PrefabsScripts/Hero.cs
                 // Отталкивать вверх, если прыгал
+=======
+>>>>>>> Stashed changes:Assets/Scripts/Hero.cs
                 direction = Vector2.up;
             }
             else
             {
+<<<<<<< Updated upstream:Assets/Scripts/PrefabsScripts/Hero.cs
                 // Отталкиваем в сторону от врага
                 direction = (transform.position - (Vector3)attackerPosition).normalized;
             }
@@ -205,6 +214,15 @@ public class Hero : MonoBehaviour
             // После использования сбрасываем флаг
             wasJumpingUp = false;
         }
+=======
+                direction = (transform.position - (Vector3)attackerPosition).normalized;
+            }
+            rb.AddForce(direction * knockbackStrength, ForceMode2D.Impulse);
+        }
+
+        // После применения эффекта сбрасываем флаг
+        wasJumpingUp = false;
+>>>>>>> Stashed changes:Assets/Scripts/Hero.cs
     }
 
     public void Die()

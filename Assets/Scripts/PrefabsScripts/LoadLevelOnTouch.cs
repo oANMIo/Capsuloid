@@ -10,6 +10,7 @@ public class LoadLevelOnTouch : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+<<<<<<< Updated upstream
             LoadNextLevel();
         }
     }
@@ -24,6 +25,21 @@ public class LoadLevelOnTouch : MonoBehaviour
             animator.Play("Animation 1");
             SceneManager.LoadScene(nextSceneIndex);
         }
+=======
+            LoadNextScene();
+        }
+    }
+
+    private void LoadNextScene()
+    {
+        // Получаем текущий номер сцены
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        // Инкрементируем его на 1
+        int nextSceneIndex = currentSceneIndex + 1;
+
+        // Загружаем следующую сцену
+        SceneManager.LoadScene(nextSceneIndex);
+>>>>>>> Stashed changes
     }
 
 }
