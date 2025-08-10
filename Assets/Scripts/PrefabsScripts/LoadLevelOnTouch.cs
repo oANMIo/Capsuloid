@@ -12,6 +12,7 @@ public class LoadLevelOnTouch : MonoBehaviour
         {
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             LoadNextLevel();
         }
     }
@@ -32,6 +33,21 @@ public class LoadLevelOnTouch : MonoBehaviour
 =======
             LoadNextScene();
         }
+=======
+            LoadNextScene();
+        }
+    }
+
+    private void LoadNextScene()
+    {
+        // Получаем текущий номер сцены
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        // Инкрементируем его на 1
+        int nextSceneIndex = currentSceneIndex + 1;
+
+        // Загружаем следующую сцену
+        SceneManager.LoadScene(nextSceneIndex);
+>>>>>>> Stashed changes
     }
 
     private void LoadNextScene()
