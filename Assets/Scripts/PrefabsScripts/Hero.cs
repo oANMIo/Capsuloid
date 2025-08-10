@@ -20,9 +20,14 @@ public class Hero : MonoBehaviour
     private GameObject currentSentry;
     public static Hero Instance { get; set; }
 <<<<<<< Updated upstream:Assets/Scripts/PrefabsScripts/Hero.cs
+<<<<<<< Updated upstream:Assets/Scripts/PrefabsScripts/Hero.cs
     public float knockbackStrength = 8f; // Настраиваемая сила отбрасывания
     public bool wasJumpingUp = false;
     public bool isDead = false;
+=======
+    public float knockbackStrength = 5f;
+    public bool wasJumpingUp = false;
+>>>>>>> Stashed changes:Assets/Scripts/Hero.cs
 =======
     public float knockbackStrength = 5f;
     public bool wasJumpingUp = false;
@@ -197,13 +202,17 @@ public class Hero : MonoBehaviour
             if (wasJumpingUp)
             {
 <<<<<<< Updated upstream:Assets/Scripts/PrefabsScripts/Hero.cs
+<<<<<<< Updated upstream:Assets/Scripts/PrefabsScripts/Hero.cs
                 // Отталкивать вверх, если прыгал
+=======
+>>>>>>> Stashed changes:Assets/Scripts/Hero.cs
 =======
 >>>>>>> Stashed changes:Assets/Scripts/Hero.cs
                 direction = Vector2.up;
             }
             else
             {
+<<<<<<< Updated upstream:Assets/Scripts/PrefabsScripts/Hero.cs
 <<<<<<< Updated upstream:Assets/Scripts/PrefabsScripts/Hero.cs
                 // Отталкиваем в сторону от врага
                 direction = (transform.position - (Vector3)attackerPosition).normalized;
@@ -215,6 +224,8 @@ public class Hero : MonoBehaviour
             wasJumpingUp = false;
         }
 =======
+=======
+>>>>>>> Stashed changes:Assets/Scripts/Hero.cs
                 direction = (transform.position - (Vector3)attackerPosition).normalized;
             }
             rb.AddForce(direction * knockbackStrength, ForceMode2D.Impulse);
@@ -222,6 +233,9 @@ public class Hero : MonoBehaviour
 
         // После применения эффекта сбрасываем флаг
         wasJumpingUp = false;
+<<<<<<< Updated upstream:Assets/Scripts/PrefabsScripts/Hero.cs
+>>>>>>> Stashed changes:Assets/Scripts/Hero.cs
+=======
 >>>>>>> Stashed changes:Assets/Scripts/Hero.cs
     }
 
