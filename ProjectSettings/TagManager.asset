@@ -15,11 +15,11 @@ TagManager:
   - Water
   - UI
   - Ground
-  - 
-  - 
-  - 
-  - 
-  - 
+  - "\u042E\u0430\u04392"
+  - 3
+  - 4
+  - 5
+  - 6
   - 
   - 
   - 
@@ -43,6 +43,24 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: New Layer 1
+    uniqueID: 2531596469
+    locked: 0
+  - name: New Layer 2
+    uniqueID: 4026485427
+    locked: 0
+  - name: New Layer 3
+    uniqueID: 3997421467
+    locked: 0
+  - name: New Layer 4
+    uniqueID: 927677505
+    locked: 0
+  - name: New Layer 5
+    uniqueID: 2908603985
+    locked: 0
+  - name: New Layer 6
+    uniqueID: 666872889
     locked: 0
   m_RenderingLayers:
   - Default

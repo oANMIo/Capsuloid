@@ -12,6 +12,12 @@ public class MenuManager : MonoBehaviour, IPointerClickHandler // Реализуем инте
     private bool isVideoPlaying = false;
     private bool isAuthorsVisible = false; // Флаг видимости окна авторов
 
+    [Tooltip("Саунд-эффект, который проигрывается при открытии/закрытии")]
+    public AudioClip clickSound;
+    public float volume = 1f;
+
+    private AudioSource audioSource;
+
     private void Start()
     {
         if (videoPlayer != null)
@@ -25,6 +31,14 @@ public class MenuManager : MonoBehaviour, IPointerClickHandler // Реализуем инте
         {
             Autors.SetActive(false);
         }
+
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+        audioSource.playOnAwake = false;
+        audioSource.volume = volume;
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -32,6 +46,7 @@ public class MenuManager : MonoBehaviour, IPointerClickHandler // Реализуем инте
         // Если окно авторов активно, скрываем его при клике
         if (isAuthorsVisible)
         {
+            PlayClickSound();
             Autors.SetActive(false);
             isAuthorsVisible = false;
         }
@@ -41,6 +56,7 @@ public class MenuManager : MonoBehaviour, IPointerClickHandler // Реализуем инте
     {
         if (videoPlayer != null && !isVideoPlaying)
         {
+            PlayClickSound();
             menuUI.SetActive(false);
             videoPlayer.gameObject.SetActive(true);
             videoPlayer.Play();
@@ -56,6 +72,7 @@ public class MenuManager : MonoBehaviour, IPointerClickHandler // Реализуем инте
     {
         if (Autors != null)
         {
+            PlayClickSound();
             Autors.SetActive(true);
             isAuthorsVisible = true;
         }
@@ -63,6 +80,7 @@ public class MenuManager : MonoBehaviour, IPointerClickHandler // Реализуем инте
 
     public void Exit()
     {
+        PlayClickSound();
         Application.Quit();
     }
 
@@ -82,6 +100,14 @@ public class MenuManager : MonoBehaviour, IPointerClickHandler // Реализуем инте
                 Autors.SetActive(false);
                 isAuthorsVisible = false;
             }
+        }
+    }
+
+    void PlayClickSound()
+    {
+        if (audioSource != null && clickSound != null)
+        {
+            audioSource.PlayOneShot(clickSound, volume);
         }
     }
 }

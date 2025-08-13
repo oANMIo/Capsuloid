@@ -4,6 +4,39 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Menus.unity
+    guid: 99a8f6ef258eefd47889d9f12e545ae0
+  - enabled: 1
+    path: Assets/Scenes/1lvl.unity
+    guid: cc82b156bd5ba8349ad6fe03dd61a8e5
+  - enabled: 1
+    path: Assets/Scenes/2lvl.unity
+    guid: e57ac8abd30a23b4290634287cbccf28
+  - enabled: 1
+    path: Assets/Scenes/3lvl.unity
+    guid: 1d3f74b01261f5944aa4660bbd8acead
+  - enabled: 1
+    path: Assets/Scenes/4lvl.unity
+    guid: 18def56b12eb6a4428ea35592b42d892
+  - enabled: 1
+    path: Assets/Scenes/5lvl.unity
+    guid: cad3f9d1bbd4aab4299843d52550da07
+  - enabled: 1
+    path: Assets/Scenes/6lvl.unity
+    guid: 1899128eae53e10478d761802391434c
+  - enabled: 1
+    path: Assets/Scenes/7lvl.unity
+    guid: dde3ff77ae8cf654a8e08d6418bd17ef
+  - enabled: 1
+    path: Assets/Scenes/8lvl.unity
+    guid: c2d69ff8827e67545bcd5eb6c9d11f8f
+  - enabled: 1
+    path: Assets/Scenes/9lvl.unity
+    guid: e1180d06518164c4c868692960942bb0
+  - enabled: 1
+    path: Assets/Scenes/10lvl.unity
+    guid: 64c5567d8eae9884fb3f74d1920a5781
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

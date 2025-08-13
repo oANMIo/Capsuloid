@@ -54,4 +54,5 @@ public class TutorialToggle : MonoBehaviour
             speechText.SetActive(sceneIndex == 1);
         }
     }
+
 }

@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
@@ -7,6 +9,12 @@ public class PauseMenu : MonoBehaviour
 
     public bool PauseGame { get; private set; }
     public GameObject PauseGameMenu;
+    [Tooltip("Саунд-эффект, который проигрывается при открытии/закрытии")]
+    public AudioClip clickSound;
+    public float volume = 1f;
+    public GameObject Autors;
+    private bool isAuthorsVisible = false;
+    private AudioSource audioSource;
 
     private void Awake()
     {
@@ -20,11 +28,39 @@ public class PauseMenu : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+        audioSource.playOnAwake = false;
+        audioSource.volume = volume;
     }
 
     private void OnDestroy()
     {
         SceneManager.activeSceneChanged -= OnSceneChanged;
+    }
+
+    public void Info()
+    {
+        if (Autors != null)
+        {
+            PlayClickSound();
+            Autors.SetActive(true);
+            isAuthorsVisible = true;
+        }
+    }
+
+    public void CloseInfo()
+    {
+        // Если окно авторов активно, скрываем его при клике
+        if (isAuthorsVisible)
+        {
+            PlayClickSound();
+            Autors.SetActive(false);
+            isAuthorsVisible = false;
+        }
     }
 
     private void OnSceneChanged(Scene previousScene, Scene newScene)
@@ -57,6 +93,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
+        PlayClickSound();
         PauseGameMenu.SetActive(false);
         Time.timeScale = 1f;
         PauseGame = false;
@@ -71,7 +108,16 @@ public class PauseMenu : MonoBehaviour
 
     public void LoadMenu()
     {
+        PlayClickSound();
         Time.timeScale = 1f;
         SceneManager.LoadScene("Menus");
+    }
+
+    void PlayClickSound()
+    {
+        if (audioSource != null && clickSound != null)
+        {
+            audioSource.PlayOneShot(clickSound, volume);
+        }
     }
 }
