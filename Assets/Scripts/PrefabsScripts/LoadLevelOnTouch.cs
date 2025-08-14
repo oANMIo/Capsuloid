@@ -1,16 +1,42 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections;
 
 public class LoadLevelOnTouch : MonoBehaviour
 {
-    private Animator animator;
+    public FadeController fadeController;
+
+    private void Awake()
+    {
+        // Можно автоматом подцепить FadeController, если он на том же Canvas
+        if (fadeController == null)
+        {
+            // Ищем по тегу/компоненту, если не прикреплен через Inspector
+            var fc = FindObjectOfType<FadeController>();
+            if (fc != null) fadeController = fc;
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            LoadNextLevel();
+            if (fadeController != null)
+            {
+                fadeController.FadeOut(() =>
+                {
+                    LoadNextLevel();
+                    // После загрузки сцены сделайте FadeIn на новой сцене.
+                    // Логика FadeIn будет вызвана после того, как сцена загрузится и этот скрипт/FadeController будет создан.
+                    // Мы можем вызвать FadeIn здесь, но лучше запланировать на новой сцене после загрузки.
+                    // Чтобы упростить, вызовем FadeIn прямо после загрузки на следующей сцене.
+                    // Реализация ниже требует добавления вызова FadeIn в новой сцене (см. ниже).
+                });
+            }
+            else
+            {
+                // Бэкап: просто загрузить без затухания
+                LoadNextLevel();
+            }
         }
     }
 
@@ -19,22 +45,11 @@ public class LoadLevelOnTouch : MonoBehaviour
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         int nextSceneIndex = currentSceneIndex + 1;
 
-        {
-            animator = GetComponent<Animator>();
-            animator.Play("Animation 1");
-            SceneManager.LoadScene(nextSceneIndex);
-        }
-    }
-
-    private void LoadNextScene()
-    {
-        // Получаем текущий номер сцены
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        // Инкрементируем его на 1
-        int nextSceneIndex = currentSceneIndex + 1;
-
-        // Загружаем следующую сцену
+        // Загрузка следующей сцены
         SceneManager.LoadScene(nextSceneIndex);
+        // Примечание: FadeIn для новой сцены лучше вызывать не здесь, а в начале следующей сцены,
+        // после ее загрузки. Это можно сделать путем добавления вызова fadeControllerFadeIn
+        // в Start() следующей сцены, если FadeController доступен там.
     }
-    
+
 }

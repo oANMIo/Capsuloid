@@ -45,9 +45,9 @@ GameObject:
   - component: {fileID: 3809659529359550506}
   - component: {fileID: -8655363058269059214}
   - component: {fileID: 3797127491721364015}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SentryPrefabAnim1
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
