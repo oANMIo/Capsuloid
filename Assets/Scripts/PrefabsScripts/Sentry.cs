@@ -125,7 +125,7 @@ public class Sentry : MonoBehaviour
 
         private void Die()
         {
-            ammoBar?.UpdateAmmoUI(currentAmmo);
+            ammoBar?.UpdateAmmoUI(maxAmmo);
             Destroy(gameObject, 0.5f);
         }
     }

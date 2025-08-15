@@ -12,6 +12,7 @@ public class WinZone : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            Cursor.lockState = CursorLockMode.None; Cursor.visible = true;
             Time.timeScale = 0f; 
             levelCompleteMenu.SetActive(true);
             audioSource?.PlayOneShot(WinSound);

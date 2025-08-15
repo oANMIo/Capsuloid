@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class FadeController : MonoBehaviour
 {
     public CanvasGroup canvasGroup; // можно назначить через инспектор
-    public float fadeDuration = 1.4f;
+    public float fadeDuration = 1.6f;
 
     private bool isFading;
 
