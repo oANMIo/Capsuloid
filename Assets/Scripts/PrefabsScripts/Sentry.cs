@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Sentry : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class Sentry : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     public AudioSource audioSource;
     [SerializeField] private AudioClip ShootSound;
+    [SerializeField] private Sprite[] ammoBarSprites;
+    [SerializeField] private AmmoBar ammoBar; // привяжи в инспекторе
 
     private Animator animator;
     private int currentAmmo;
@@ -17,86 +20,112 @@ public class Sentry : MonoBehaviour
     private float lastAttackTime;
     private bool isFacingLeft = true; // по умолчанию, или можно установить через метод
 
+
+
     void Start()
     {
-        currentAmmo = maxAmmo;
-        animator = GetComponent<Animator>();
-    }
-
-    void Update()
-    {
-        if (TryFindNearestEnemy()) // Теперь возвращает true только при наличии врага
+        if (ammoBar == null)
         {
-            if (currentAmmo > 0 && Time.time > lastAttackTime + attackCooldown)
+            var barObj = GameObject.FindWithTag("AmmoBarImage"); // тег на объекте Image
+            if (barObj != null)
             {
-                Attack();
-            }
-            else if (currentAmmo <= 0)
-            {
-                Die();
+                ammoBar = FindObjectOfType<AmmoBar>();
             }
         }
+            currentAmmo = maxAmmo;
+            // если AmmoBar нашёл Image по тегу и собрал спрайты, можно просто обновить состояние
+            ammoBar?.UpdateAmmoUI(currentAmmo);
+            animator = GetComponent<Animator>();
+        
     }
-
-    private bool TryFindNearestEnemy()
-    {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        float closestDistance = Mathf.Infinity;
-        Transform closestEnemy = null;
-
-        foreach (GameObject enemyObj in enemies)
+        void Update()
         {
-            if (enemyObj == null) continue;
-
-            float distance = Vector3.Distance(transform.position, enemyObj.transform.position);
-            if (distance < detectionRange && distance < closestDistance)
+            if (TryFindNearestEnemy()) // Теперь возвращает true только при наличии врага
             {
-                closestDistance = distance;
-                closestEnemy = enemyObj.transform;
+                if (currentAmmo > 0 && Time.time > lastAttackTime + attackCooldown)
+                {
+                    Attack();
+                }
+                else if (currentAmmo <= 0)
+                {
+                    Die();
+                }
             }
         }
 
-        enemy = closestEnemy;
-        return enemy != null; 
-    }
-
-    public void SetFacingDirection(bool facingLeft)
-    {
-        Vector3 scale = transform.localScale;
-        scale.x = Mathf.Abs(scale.x) * (facingLeft ? -1 : 1);
-        transform.localScale = scale;
-    }
-
-    public void Attack()
-    {
-        if (bulletPrefab == null || enemy == null || firePoint == null)
-            return;
-
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
-        bool facingLeft = Mathf.Sign(transform.localScale.x) < 0;
-        Vector2 direction = facingLeft ? Vector2.left : Vector2.right;
-
-        Bullet bulletScript = bullet.GetComponent<Bullet>();
-        if (bulletScript != null)
+        private void UpdateAmmoUI()
         {
-            bulletScript.SetDirection(direction);
+            if (ammoBar != null)
+            {
+                ammoBar?.UpdateAmmoUI(currentAmmo);
+            }
+            else
+            {
+                return;
+            }
         }
 
-        // Если турель повернута влево, принудительно задаем пуле движение влево //убрать
-        if (isFacingLeft)
+        private bool TryFindNearestEnemy()
         {
-            direction = Vector2.left;
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            float closestDistance = Mathf.Infinity;
+            Transform closestEnemy = null;
+
+            foreach (GameObject enemyObj in enemies)
+            {
+                if (enemyObj == null) continue;
+
+                float distance = Vector3.Distance(transform.position, enemyObj.transform.position);
+                if (distance < detectionRange && distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    closestEnemy = enemyObj.transform;
+                }
+            }
+
+            enemy = closestEnemy;
+            return enemy != null;
         }
 
-        Destroy(bullet, 5f);
-        audioSource.PlayOneShot(ShootSound);
-        currentAmmo--;
-        lastAttackTime = Time.time;
-        animator.SetBool("SeeEnemy", true);
-    }
+        public void SetFacingDirection(bool facingLeft)
+        {
+            Vector3 scale = transform.localScale;
+            scale.x = Mathf.Abs(scale.x) * (facingLeft ? -1 : 1);
+            transform.localScale = scale;
+        }
 
-    private void Die()
-    {
-        Destroy(gameObject, 0.5f);
+        public void Attack()
+        {
+            if (bulletPrefab == null || enemy == null || firePoint == null)
+                return;
+
+            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
+            bool facingLeft = Mathf.Sign(transform.localScale.x) < 0;
+            Vector2 direction = facingLeft ? Vector2.left : Vector2.right;
+
+            Bullet bulletScript = bullet.GetComponent<Bullet>();
+            if (bulletScript != null)
+            {
+                bulletScript.SetDirection(direction);
+            }
+
+            // Если турель повернута влево, принудительно задаем пуле движение влево //убрать
+            if (isFacingLeft)
+            {
+                direction = Vector2.left;
+            }
+
+            Destroy(bullet, 5f);
+            audioSource.PlayOneShot(ShootSound);
+            currentAmmo--;
+            ammoBar?.UpdateAmmoUI(currentAmmo);
+            lastAttackTime = Time.time;
+            animator.SetBool("SeeEnemy", true);
+        }
+
+        private void Die()
+        {
+            ammoBar?.UpdateAmmoUI(currentAmmo);
+            Destroy(gameObject, 0.5f);
+        }
     }
-}

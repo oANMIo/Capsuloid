@@ -1455,13 +1455,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47b0263f16d47fe4ca223ffce57fab2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorTexture: {fileID: 2800000, guid: 50de823c72e23dc41abd176a8075e7d6, type: 3}
-  cursorPixelSize: 256
-  cursorScale: 2
-  cursorTextures: []
-  textureIndex: -1
-  hotSpot: {x: 0, y: 0}
-  cursorMode: 0
 --- !u!1 &1323882330
 GameObject:
   m_ObjectHideFlags: 0
@@ -1606,9 +1599,9 @@ GameObject:
   - component: {fileID: 1344499851}
   - component: {fileID: 1344499850}
   - component: {fileID: 1344499853}
-  - component: {fileID: 1344499854}
   - component: {fileID: 1344499855}
   - component: {fileID: 1344499856}
+  - component: {fileID: 1344499857}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1738,25 +1731,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!114 &1344499854
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1344499849}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47b0263f16d47fe4ca223ffce57fab2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cursorTexture: {fileID: 0}
-  cursorPixelSize: 32
-  cursorScale: 1
-  cursorTextures: []
-  textureIndex: -1
-  hotSpot: {x: 0, y: 0}
-  cursorMode: 0
 --- !u!82 &1344499855
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1877,6 +1851,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1344499857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1344499849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49ab830bf30a43f4584c289cf1d2d723, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1497280784
 GameObject:
   m_ObjectHideFlags: 0
@@ -2329,7 +2315,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2021678721
 MonoBehaviour:
   m_ObjectHideFlags: 0

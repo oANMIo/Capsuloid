@@ -144,6 +144,7 @@ MonoBehaviour:
     m_Bits: 64
   audioSource: {fileID: 8679371782290653289}
   JumpSound: {fileID: 8300000, guid: 6163701376a59da469332d0c236d0cec, type: 3}
+  WalkSound: {fileID: 8300000, guid: 3787f5c3a26357049af90ac0d7b898e3, type: 3}
   SentryUp: {fileID: 8300000, guid: 9bc590054cea4904890e9909a2801272, type: 3}
 --- !u!70 &1415650244698968601
 CapsuleCollider2D:

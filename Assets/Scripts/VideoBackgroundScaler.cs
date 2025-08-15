@@ -7,6 +7,7 @@ public class VideoBackgroundScaler : MonoBehaviour
 
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked; Cursor.visible = false;
         StretchToFullScreen();
     }
 

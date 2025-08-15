@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 3809659529359550506}
   - component: {fileID: -8655363058269059214}
   - component: {fileID: 3797127491721364015}
+  - component: {fileID: -257692198868954916}
   m_Layer: 6
   m_Name: SentryPrefabAnim1
   m_TagString: Ground
@@ -164,6 +165,14 @@ MonoBehaviour:
   bulletPrefab: {fileID: 2554054305233689289, guid: c09184128cb80ba498a0603b81dc5c4c, type: 3}
   audioSource: {fileID: -8655363058269059214}
   ShootSound: {fileID: 8300000, guid: 61bf9a9a932366b48a2cafc5064400f4, type: 3}
+  ammoBarSprites:
+  - {fileID: -5591847071492940774, guid: 963c52099527a064ebdac8a80aba2ce7, type: 3}
+  - {fileID: -2375797588107706375, guid: bb5e1604c2700e645852075295055a69, type: 3}
+  - {fileID: -1205863086367790515, guid: 187e1f65b96a5a34b9b811392e5580ec, type: 3}
+  - {fileID: -3996146178970568408, guid: 4093ca39c2750db4c82418dbf13cfdc6, type: 3}
+  - {fileID: 2040285901649876786, guid: 3d154960f32e4fc4a985957b44a1c045, type: 3}
+  - {fileID: -8161296737833270729, guid: 0cb6ff71be2c21946b504a467068cea6, type: 3}
+  ammoBar: {fileID: 0}
 --- !u!82 &-8655363058269059214
 AudioSource:
   m_ObjectHideFlags: 0
@@ -307,3 +316,23 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.21, y: 0.14}
   m_EdgeRadius: 0
+--- !u!114 &-257692198868954916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7495627791903151890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb17a7093f2ceb84abdefedd38ecc637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imageTag: AmmoBarImage
+  ammoBarSprites:
+  - {fileID: -5591847071492940774, guid: 963c52099527a064ebdac8a80aba2ce7, type: 3}
+  - {fileID: -2375797588107706375, guid: bb5e1604c2700e645852075295055a69, type: 3}
+  - {fileID: -1205863086367790515, guid: 187e1f65b96a5a34b9b811392e5580ec, type: 3}
+  - {fileID: -3996146178970568408, guid: 4093ca39c2750db4c82418dbf13cfdc6, type: 3}
+  - {fileID: 2040285901649876786, guid: 3d154960f32e4fc4a985957b44a1c045, type: 3}
+  - {fileID: -8161296737833270729, guid: 0cb6ff71be2c21946b504a467068cea6, type: 3}
