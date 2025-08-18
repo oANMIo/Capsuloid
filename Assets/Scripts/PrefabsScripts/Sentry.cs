@@ -39,8 +39,8 @@ public class Sentry : MonoBehaviour
         
     }
         void Update()
-        {
-            if (TryFindNearestEnemy()) // “еперь возвращает true только при наличии врага
+       {
+        if (TryFindNearestEnemy()) // “еперь возвращает true только при наличии врага
             {
                 if (currentAmmo > 0 && Time.time > lastAttackTime + attackCooldown)
                 {
@@ -51,7 +51,7 @@ public class Sentry : MonoBehaviour
                     Die();
                 }
             }
-        }
+       }
 
         private void UpdateAmmoUI()
         {
@@ -123,7 +123,7 @@ public class Sentry : MonoBehaviour
             animator.SetBool("SeeEnemy", true);
         }
 
-        private void Die()
+        public void Die()
         {
             ammoBar?.UpdateAmmoUI(maxAmmo);
             Destroy(gameObject, 0.5f);

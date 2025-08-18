@@ -124,6 +124,12 @@ public class Hero : MonoBehaviour
             }
             else
             {
+                // Обновление Ammo UI можно оставить, если нужно
+                // ammoBar?.UpdateAmmoUI(maxAmmo);
+
+                // Вызов публичного метода Die() у текущей турели
+                
+
                 Destroy(currentSentry);
                 currentSentry = null;
             }

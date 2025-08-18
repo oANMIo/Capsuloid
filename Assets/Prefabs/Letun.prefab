@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5882342319511481730}
   - component: {fileID: 5349958795469680604}
   - component: {fileID: 4190598940067988722}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Letun
   m_TagString: Enemy
   m_Icon: {fileID: 0}
