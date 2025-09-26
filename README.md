@@ -1,2 +1,2 @@
 # Capsuloid
-my 1st real project
+my 1st real playable project
